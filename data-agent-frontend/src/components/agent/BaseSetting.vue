@@ -216,8 +216,9 @@
   .form-item label {
     display: block;
     margin-bottom: 10px;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 15px;
+    color: var(--text-primary);
   }
 
   .form-switch {
@@ -225,6 +226,7 @@
     align-items: center;
     gap: 12px;
     font-size: 15px;
+    color: var(--text-primary);
   }
 
   .button-group {
@@ -232,7 +234,7 @@
     gap: 12px;
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid #f0f0f0;
+    border-top: 1px solid var(--border-primary);
   }
 
   .button-group :deep(.el-button) {

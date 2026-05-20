@@ -3,15 +3,28 @@
 
 -- 业务知识示例数据
 INSERT IGNORE INTO `business_knowledge` (`id`, `business_term`, `description`, `synonyms`, `is_recall`, `agent_id`, `created_time`, `updated_time`) VALUES
-(1, 'Customer Satisfaction', 'Measures how satisfied customers are with the service or product.', 'customer happiness, client contentment', 0, 1, NOW(), NOW()),
-(2, 'Net Promoter Score', 'A measure of the likelihood of customers recommending a company to others.', 'NPS, customer loyalty score', 0, 1, NOW(), NOW()),
-(3, 'Customer Retention Rate', 'The percentage of customers who continue to use a service over a given period.', 'retention, customer loyalty', 0, 2, NOW(), NOW());
+(1, '人口总数', '全国及各省份的常住人口总数，单位为万人', '总人口,人口数量,人口规模', 1, 1, NOW(), NOW()),
+(2, '年龄结构', '人口按年龄段的分布情况，包括少年、劳动年龄人口、老年人口等', '年龄分布,年龄段,老龄化', 1, 1, NOW(), NOW()),
+(3, '性别比例', '男性与女性人口的比例，通常以每100名女性对应的男性数量表示', '性别比,男女比例', 1, 1, NOW(), NOW()),
+(4, '城乡分布', '人口在城镇和乡村之间的分布情况', '城镇化率,城镇人口,农村人口', 1, 1, NOW(), NOW()),
+(5, 'Customer Retention Rate', 'The percentage of customers who continue to use a service over a given period.', 'retention, customer loyalty', 0, 2, NOW(), NOW());
 
--- 语义模型示例数据
+-- 语义模型示例数据（匹配 china_population_db 实际表结构）
 INSERT IGNORE INTO `semantic_model` (`id`, `agent_id`, `datasource_id`, `table_name`, `column_name`, `business_name`, `synonyms`, `business_description`, `column_comment`, `data_type`, `created_time`, `updated_time`, `status`) VALUES
-(1, 1, 2, 'customer_feedback', 'csat_score', 'customerSatisfactionScore', 'satisfaction score, customer rating', 'Customer satisfaction rating from 1-10', '客户满意度评分', 'integer', NOW(), NOW(), 0),
-(2, 1, 2, 'customer_feedback', 'nps_value', 'netPromoterScore', 'NPS, promoter score', 'Net Promoter Score from -100 to 100', '净推荐值', 'integer', NOW(), NOW(), 0),
-(3, 2, 1, 'customer_metrics', 'retention_pct', 'customerRetentionRate', 'retention rate, loyalty rate', 'Percentage of retained customers', '客户保留率', 'decimal', NOW(), NOW(), 0);
+(1, 1, 2, 'population_total', 'year', '年份', '年度,统计年份', '数据统计的年份', '统计年份', 'integer', NOW(), NOW(), 1),
+(2, 1, 2, 'population_total', 'population', '人口总数', '总人口,人口数量', '全国常住人口总数，单位为万人', '常住人口总数(万人)', 'decimal', NOW(), NOW(), 1),
+(3, 1, 2, 'population_total', 'urban_population', '城镇人口', '城市人口', '城镇常住人口数量', '城镇人口(万人)', 'decimal', NOW(), NOW(), 1),
+(4, 1, 2, 'population_total', 'rural_population', '乡村人口', '农村人口', '乡村常住人口数量', '乡村人口(万人)', 'decimal', NOW(), NOW(), 1),
+(5, 1, 2, 'age_structure', 'age_group', '年龄组', '年龄段', '人口年龄分组名称', '年龄分组', 'varchar', NOW(), NOW(), 1),
+(6, 1, 2, 'age_structure', 'population', '人口数', '人口数量', '该年龄段的人口数量', '人口数(万人)', 'decimal', NOW(), NOW(), 1),
+(7, 1, 2, 'age_structure', 'percentage', '占比', '比例,百分比', '该年龄段人口占总人口的比例', '占比(%)', 'decimal', NOW(), NOW(), 1),
+(8, 1, 2, 'gender_ratio', 'year', '年份', '年度', '统计年份', '统计年份', 'integer', NOW(), NOW(), 1),
+(9, 1, 2, 'gender_ratio', 'ratio', '性别比', '男女比例,性别比例', '每100名女性对应的男性数量', '性别比', 'decimal', NOW(), NOW(), 1),
+(10, 1, 2, 'province_population', 'province', '省份', '省,地区', '省级行政区名称', '省份名称', 'varchar', NOW(), NOW(), 1),
+(11, 1, 2, 'province_population', 'population', '人口数', '总人口,人口数量', '该省份常住人口总数', '人口数(万人)', 'decimal', NOW(), NOW(), 1),
+(12, 1, 2, 'urban_rural_distribution', 'year', '年份', '年度', '统计年份', '统计年份', 'integer', NOW(), NOW(), 1),
+(13, 1, 2, 'urban_rural_distribution', 'urban_rate', '城镇化率', '城镇人口比例', '城镇人口占总人口的比例', '城镇化率(%)', 'decimal', NOW(), NOW(), 1),
+(14, 2, 1, 'customer_metrics', 'retention_pct', 'customerRetentionRate', 'retention rate, loyalty rate', 'Percentage of retained customers', '客户保留率', 'decimal', NOW(), NOW(), 0);
 
 -- 智能体示例数据
 INSERT IGNORE INTO `agent` (`id`, `name`, `description`, `avatar`, `status`, `api_key`, `api_key_enabled`, `prompt`, `category`, `admin_id`, `tags`, `create_time`, `update_time`) VALUES
@@ -33,8 +46,8 @@ INSERT IGNORE INTO `agent_knowledge` (`id`, `agent_id`, `title`, `content`, `typ
 -- 数据源示例数据
 -- 示例数据源可以运行docker-compose-datasource.yml建立，或者手动修改为自己的数据源
 INSERT IGNORE INTO `datasource` (`id`, `name`, `type`, `host`, `port`, `database_name`, `username`, `password`, `connection_url`, `status`, `test_status`, `description`, `creator_id`, `create_time`, `update_time`) VALUES 
-(1, '生产环境MySQL数据库', 'mysql', 'mysql-data', 3306, 'product_db', 'root', 'root', 'jdbc:mysql://mysql-data:3306/product_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true', 'inactive', 'unknown', '生产环境主数据库，包含核心业务数据', 2100246635, NOW(), NOW()),
-(2, '数据仓库PostgreSQL', 'postgresql', 'postgres-data', 5432, 'data_warehouse', 'postgres', 'postgres', 'jdbc:postgresql://postgres-data:5432/data_warehouse', 'inactive', 'unknown', '数据仓库，用于数据分析和报表生成', 2100246635, NOW(), NOW());
+(1, '生产环境MySQL数据库', 'mysql', 'mysql-data', 3306, 'product_db', '', '', 'jdbc:mysql://mysql-data:3306/product_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true', 'inactive', 'unknown', '生产环境主数据库，包含核心业务数据', 2100246635, NOW(), NOW()),
+(2, '数据仓库PostgreSQL', 'postgresql', 'data-agent-postgres-datasource', 5432, 'china_population_db|public', 'postgres', 'postgres', 'jdbc:postgresql://data-agent-postgres-datasource:5432/china_population_db?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai', 'inactive', 'unknown', '数据仓库，用于数据分析和报表生成', 2100246635, NOW(), NOW());
 
 -- 智能体数据源关联示例数据
 INSERT IGNORE INTO `agent_datasource` (`id`, `agent_id`, `datasource_id`, `is_active`, `create_time`, `update_time`) VALUES 

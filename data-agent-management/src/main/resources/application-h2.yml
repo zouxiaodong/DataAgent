@@ -5,8 +5,8 @@ server:
 spring:
   datasource:
     url: jdbc:h2:mem:nl2sql_database;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=true;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE
-    username: root
-    password: root
+    username: 
+    password: 
     driver-class-name: org.h2.Driver
     type: com.alibaba.druid.pool.DruidDataSource
   sql:

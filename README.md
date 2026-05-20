@@ -72,7 +72,7 @@
 
 ```bash
 # 1. 导入数据库
-mysql -u root -p < data-agent-management/src/main/resources/sql/schema.sql
+mysql -u  -p < data-agent-management/src/main/resources/sql/schema.sql
 
 # 2. 启动后端
 cd data-agent-management

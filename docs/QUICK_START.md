@@ -26,10 +26,10 @@
 
 ```bash
 # 示例：使用 MySQL 命令行导入
-mysql -u root -p your_database < data-agent-management/src/main/resources/sql/schema.sql
-mysql -u root -p your_database < data-agent-management/src/main/resources/sql/data.sql
-mysql -u root -p your_database < data-agent-management/src/main/resources/sql/product_schema.sql
-mysql -u root -p your_database < data-agent-management/src/main/resources/sql/product_data.sql
+mysql -u  -p your_database < data-agent-management/src/main/resources/sql/schema.sql
+mysql -u  -p your_database < data-agent-management/src/main/resources/sql/data.sql
+mysql -u  -p your_database < data-agent-management/src/main/resources/sql/product_schema.sql
+mysql -u  -p your_database < data-agent-management/src/main/resources/sql/product_data.sql
 ```
 
 ## ⚙️ 2. 配置
@@ -44,8 +44,8 @@ mysql -u root -p your_database < data-agent-management/src/main/resources/sql/pr
 spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/saa_data_agent?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&allowMultiQueries=true&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Shanghai
-    username: ${MYSQL_USERNAME:root}
-    password: ${MYSQL_PASSWORD:root}
+    username: ${MYSQL_USERNAME:}
+    password: ${MYSQL_PASSWORD:}
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 ```

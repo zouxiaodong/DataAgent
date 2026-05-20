@@ -670,19 +670,17 @@
 <style scoped>
   .model-config-page {
     min-height: 100vh;
-    background: #f8fafc;
-    font-family:
-      -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg-layout);
+    font-family: var(--font-family);
   }
 
-  /* 主内容区域 */
   .main-content {
     width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 2rem;
   }
 
-  /* 内容头部 */
   .content-header {
     display: flex;
     justify-content: space-between;
@@ -692,18 +690,18 @@
 
   .header-info h1 {
     font-size: 2rem;
-    font-weight: 600;
-    color: #1f2937;
+    font-weight: 700;
+    color: var(--primary-color);
     margin: 0 0 0.5rem 0;
+    letter-spacing: -0.02em;
   }
 
   .header-info p {
-    color: #6b7280;
+    color: var(--text-secondary);
     margin: 0;
     font-size: 1.1rem;
   }
 
-  /* 操作区域 */
   .action-section {
     margin-bottom: 2rem;
   }
@@ -725,7 +723,6 @@
     gap: 1rem;
   }
 
-  /* 配置表格 */
   .config-table {
     margin-bottom: 2rem;
   }
@@ -735,30 +732,25 @@
     gap: 0.5rem;
   }
 
-  /* 加载状态 */
   .loading-state {
     padding: 4rem 2rem;
   }
 
-  /* 空状态 */
   .empty-state {
     padding: 4rem 2rem;
   }
 
-  /* 表单提示 */
   .form-tip {
     font-size: 0.75rem;
-    color: #6b7280;
+    color: var(--text-secondary);
     margin-top: 0.25rem;
   }
 
-  /* 文本样式 */
   .text-muted {
-    color: #9ca3af;
+    color: var(--text-tertiary);
     font-style: italic;
   }
 
-  /* 响应式设计 */
   @media (max-width: 768px) {
     .main-content {
       padding: 1rem;

@@ -85,7 +85,7 @@ public class PromptHelper {
 			line.append("(")
 				.append(columnDTO.getName())
 				.append(BooleanUtils.isTrue(withColumnType)
-						? ":" + StringUtils.defaultString(columnDTO.getType(), "").toUpperCase(Locale.ROOT) : "");
+						? ":" + StringUtils.defaultString(columnDTO.getType(), "").toUpperCase(Locale.) : "");
 			if (!StringUtils.equals(columnDTO.getDescription(), columnDTO.getName())) {
 				line.append(", ").append(StringUtils.defaultString(columnDTO.getDescription(), ""));
 			}

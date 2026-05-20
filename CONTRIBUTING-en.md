@@ -57,7 +57,7 @@ After completing local development, we strongly recommend running the `make` com
 
 ### Local Checkstyle
 
-To reduce unnecessary code style issues, Spring AI Alibaba provides local Checkstyle checking. You can run `mvn checkstyle:check` in the project root directory to check if the code style meets the specifications.
+To reduce unnecessary code style issues, Spring AI Alibaba provides local Checkstyle checking. You can run `mvn checkstyle:check` in the project  directory to check if the code style meets the specifications.
 
 ### Remove Unused Imports
 

@@ -25,7 +25,7 @@ cd spring-ai-alibaba-data-agent
 ### Backend Development Environment
 
 1. **Import Project into IDE**
-   - Open the project root directory with IntelliJ IDEA
+   - Open the project  directory with IntelliJ IDEA
    - IDE will automatically recognize it as a Maven project and download dependencies
 
 2. **Configure Database**

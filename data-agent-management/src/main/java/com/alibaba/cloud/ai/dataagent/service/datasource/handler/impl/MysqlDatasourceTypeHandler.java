@@ -43,10 +43,10 @@ public class MysqlDatasourceTypeHandler implements DatasourceTypeHandler {
 	@Override
 	public String normalizeTestUrl(Datasource datasource, String url) {
 		String updated = url;
-		String lowerUrl = updated.toLowerCase(Locale.ROOT);
+		String lowerUrl = updated.toLowerCase(Locale.);
 		if (!lowerUrl.contains("servertimezone=")) {
 			updated = appendParam(updated, "serverTimezone", "Asia/Shanghai");
-			lowerUrl = updated.toLowerCase(Locale.ROOT);
+			lowerUrl = updated.toLowerCase(Locale.);
 		}
 		if (!lowerUrl.contains("usessl=")) {
 			updated = appendParam(updated, "useSSL", "false");

@@ -209,31 +209,29 @@
 <style scoped>
   .result-set-error {
     padding: 12px;
-    background-color: #fef0f0;
-    border: 1px solid #fbc4c4;
-    border-radius: 4px;
-    color: #f56c6c;
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: var(--radius-sm);
+    color: #ef4444;
     margin: 8px 0;
   }
 
   .result-set-empty {
     padding: 12px;
-    background-color: #f4f4f5;
-    border: 1px solid #e9e9eb;
-    border-radius: 4px;
-    color: #909399;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-sm);
+    color: var(--text-tertiary);
     margin: 8px 0;
   }
 
-  /* 头部样式 */
   .result-set-header-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    //margin-left: 15px;
     margin-bottom: 12px;
     padding: 8px 0;
-    border-bottom: 1px solid #ebeef5;
+    border-bottom: 1px solid var(--border-primary);
   }
 
   .buttons-bar {
@@ -249,19 +247,19 @@
   .tool-btn {
     padding: 4px 8px;
     margin-left: 4px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
   }
 
   .tool-btn:hover {
-    background-color: #f5f7fa;
+    background-color: var(--bg-secondary);
   }
 
   .view-active {
-    background-color: #ecf5ff;
-    color: #409eff;
+    background-color: var(--accent-light);
+    color: var(--accent-color);
   }
 
-  /* 显示区域样式 */
   .result-show-area {
     width: 100%;
     min-height: 300px;

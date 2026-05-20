@@ -88,9 +88,9 @@
 
 <style scoped>
   .human-feedback-area {
-    background: #f8fbff;
-    border: 1px solid #e1f0ff;
-    border-radius: 12px;
+    background: var(--accent-light);
+    border: 1px solid var(--accent-glow);
+    border-radius: var(--radius-lg);
     padding: 20px;
     margin: 16px 0;
   }
@@ -100,13 +100,13 @@
     align-items: center;
     gap: 8px;
     margin-bottom: 16px;
-    color: #409eff;
+    color: var(--accent-color);
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .feedback-header .el-icon {
-    color: #409eff;
+    color: var(--accent-color);
     font-size: 18px;
   }
 
@@ -120,7 +120,6 @@
     justify-content: flex-end;
   }
 
-  /* 响应式设计 */
   @media (max-width: 768px) {
     .feedback-actions {
       flex-direction: column;

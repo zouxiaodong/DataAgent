@@ -120,7 +120,7 @@ class LocalFileStorageServiceImplTest {
 	}
 
 	@Test
-	void storeFile_nullSubPath_createsFileAtRoot() throws IOException {
+	void storeFile_nullSubPath_createsFileAt() throws IOException {
 		when(multipartFile.getOriginalFilename()).thenReturn("test.pdf");
 		when(multipartFile.getInputStream()).thenReturn(new ByteArrayInputStream("pdf data".getBytes()));
 

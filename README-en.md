@@ -72,7 +72,7 @@ Additionally, this project natively supports **MCP (Model Context Protocol)**, e
 
 ```bash
 # 1. Import database
-mysql -u root -p < data-agent-management/src/main/resources/sql/schema.sql
+mysql -u  -p < data-agent-management/src/main/resources/sql/schema.sql
 
 # 2. Start backend
 cd data-agent-management

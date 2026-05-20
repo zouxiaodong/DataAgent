@@ -113,9 +113,9 @@
   }
 
   .preset-questions-container {
-    background: white;
-    border: 1px solid #e8e8e8;
-    border-radius: 8px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
     padding: 12px 16px;
   }
 
@@ -125,13 +125,13 @@
     justify-content: center;
     gap: 8px;
     padding: 12px 0;
-    color: #909399;
+    color: var(--text-tertiary);
     font-size: 13px;
   }
 
   .questions-loading .el-icon {
     font-size: 16px;
-    color: #409eff;
+    color: var(--accent-color);
   }
 
   .questions-empty {
@@ -139,7 +139,7 @@
     align-items: center;
     justify-content: center;
     padding: 12px 0;
-    color: #909399;
+    color: var(--text-tertiary);
     font-size: 13px;
   }
 
@@ -149,18 +149,18 @@
     gap: 8px;
     margin-bottom: 12px;
     padding-bottom: 8px;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--border-primary);
   }
 
   .header-icon {
     font-size: 16px;
-    color: #409eff;
+    color: var(--accent-color);
   }
 
   .header-title {
     font-size: 14px;
-    font-weight: 500;
-    color: #606266;
+    font-weight: 600;
+    color: var(--text-primary);
   }
 
   .questions-list {
@@ -176,18 +176,19 @@
     align-items: center;
     gap: 6px;
     padding: 6px 12px;
-    background: #f8f9fa;
-    border: 1px solid #e8e8e8;
-    border-radius: 6px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
     cursor: pointer;
     transition: all 0.2s ease;
     max-width: calc(50% - 4px);
   }
 
   .question-item:hover {
-    background: #ecf5ff;
-    border-color: #409eff;
+    background: var(--accent-light);
+    border-color: var(--accent-color);
     transform: translateY(-1px);
+    box-shadow: var(--shadow-xs);
   }
 
   .question-item:active {
@@ -197,7 +198,7 @@
   .question-text {
     flex: 1;
     font-size: 13px;
-    color: #303133;
+    color: var(--primary-color);
     line-height: 1.4;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -205,18 +206,18 @@
   }
 
   .question-item:hover .question-text {
-    color: #409eff;
+    color: var(--accent-color);
   }
 
   .question-arrow {
     flex-shrink: 0;
     font-size: 14px;
-    color: #c0c4cc;
+    color: var(--border-primary);
     transition: all 0.2s ease;
   }
 
   .question-item:hover .question-arrow {
-    color: #409eff;
+    color: var(--accent-color);
     transform: translateX(2px);
   }
 

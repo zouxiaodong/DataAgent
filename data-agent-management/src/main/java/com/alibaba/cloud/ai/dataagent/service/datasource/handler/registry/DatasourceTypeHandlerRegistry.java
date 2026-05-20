@@ -56,7 +56,7 @@ public class DatasourceTypeHandlerRegistry {
 		if (!StringUtils.hasText(type)) {
 			return "";
 		}
-		return type.trim().toLowerCase(Locale.ROOT);
+		return type.trim().toLowerCase(Locale.);
 	}
 
 }

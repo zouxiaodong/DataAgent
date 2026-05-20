@@ -21,7 +21,7 @@
         <div class="brand-section">
           <div class="brand-logo">
             <i class="bi bi-robot"></i>
-            <span class="brand-text">Spring AI Alibaba Data Agent</span>
+            <span class="brand-text">宁西高速智能问数</span>
           </div>
           <nav class="header-nav">
             <div class="nav-item" :class="{ active: isAgentPage() }" @click="goToAgentList">
@@ -87,13 +87,15 @@
 <style scoped>
   .base-layout {
     min-height: 100vh;
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    background: var(--bg-layout);
   }
 
   .page-header {
-    background: white;
-    border-bottom: 1px solid #e2e8f0;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-secondary);
+    box-shadow: var(--shadow-xs);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -119,13 +121,14 @@
     align-items: center;
     gap: 0.75rem;
     font-size: 1.25rem;
-    font-weight: 600;
-    color: #1e293b;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: -0.02em;
   }
 
   .brand-logo i {
     font-size: 1.5rem;
-    color: #3b82f6;
+    color: var(--accent-color);
   }
 
   .header-nav {
@@ -139,21 +142,23 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    border-radius: 8px;
+    border-radius: var(--radius-pill);
     cursor: pointer;
     transition: all 0.2s ease;
-    color: #64748b;
+    color: var(--text-secondary);
     font-weight: 500;
+    font-size: 0.875rem;
   }
 
   .nav-item:hover {
-    background: #f1f5f9;
-    color: #334155;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
   }
 
   .nav-item.active {
-    background: #e0f2fe;
-    color: #0369a1;
+    background: var(--accent-light);
+    color: var(--accent-color);
+    font-weight: 600;
   }
 
   .nav-item i {

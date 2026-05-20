@@ -62,7 +62,7 @@ npm run type-check
 
 ```bash
 # For MySQL (production)
-mysql -u root -p < data-agent-management/src/main/resources/sql/schema.sql
+mysql -u  -p < data-agent-management/src/main/resources/sql/schema.sql
 
 # For H2 (development) - auto-initializes via application-h2.yml
 # Access H2 console at: http://localhost:8065/h2-console
@@ -190,5 +190,5 @@ Uses Testcontainers for integration tests. Database: `mysql:8.0`.
 
 ### File Storage Types
 
-- **LOCAL**: `path` relative to project root (e.g., `uploads/`)
+- **LOCAL**: `path` relative to project  (e.g., `uploads/`)
 - **OSS**: Alibaba Cloud OSS with custom domain support

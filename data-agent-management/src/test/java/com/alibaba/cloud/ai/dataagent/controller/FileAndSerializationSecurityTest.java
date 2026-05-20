@@ -61,7 +61,7 @@ class FileAndSerializationSecurityTest {
 		Datasource datasource = Datasource.builder()
 			.id(1)
 			.name("mysql")
-			.username("root")
+			.username("")
 			.password("secret")
 			.connectionUrl("jdbc:mysql://127.0.0.1:3306/test")
 			.build();

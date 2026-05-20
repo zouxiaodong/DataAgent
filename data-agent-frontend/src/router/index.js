@@ -39,9 +39,9 @@ let hasShownWarning = false;
 router.beforeEach(async (to, from, next) => {
   // 设置页面标题
   if (to.meta?.title) {
-    document.title = `${to.meta.title} - Spring AI Alibaba Data Agent`;
+    document.title = `${to.meta.title} - 宁西高速智能问数`;
   } else {
-    document.title = 'Spring AI Alibaba Data Agent';
+    document.title = '宁西高速智能问数';
   }
 
   if (to.path === '/model-config') {

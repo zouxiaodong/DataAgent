@@ -590,18 +590,17 @@
 <style scoped>
   .prompt-optimization-config {
     padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
   }
 
-  /* 消息提示样式 */
   .message-toast {
     position: fixed;
     top: 20px;
     right: 20px;
     padding: 12px 16px;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     color: white;
     font-size: 14px;
     display: flex;
@@ -609,15 +608,15 @@
     gap: 8px;
     z-index: 1000;
     max-width: 300px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-lg);
   }
 
   .message-toast.success {
-    background: #52c41a;
+    background: #22c55e;
   }
 
   .message-toast.error {
-    background: #ff4d4f;
+    background: #ef4444;
   }
 
   .message-close {
@@ -636,13 +635,13 @@
 
   .config-header h3 {
     margin: 0 0 8px 0;
-    color: #333;
+    color: var(--primary-color);
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .config-description {
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 12px;
     line-height: 1.5;
   }
@@ -650,7 +649,7 @@
   .optimization-tips {
     margin: 0;
     padding-left: 20px;
-    color: #888;
+    color: var(--text-tertiary);
   }
 
   .optimization-tips li {
@@ -660,25 +659,25 @@
   .agent-prompt-section {
     margin-bottom: 24px;
     padding: 16px;
-    background: #f8f9fa;
-    border-radius: 6px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
   }
 
   .agent-prompt-section h4 {
     margin: 0 0 12px 0;
-    color: #333;
+    color: var(--primary-color);
     font-size: 14px;
     font-weight: 600;
   }
 
   .prompt-display {
-    color: #555;
+    color: var(--text-primary);
     line-height: 1.5;
     font-size: 14px;
   }
 
   .optimization-configs {
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border-primary);
     padding-top: 24px;
   }
 
@@ -697,39 +696,40 @@
 
   .config-list-header h4 {
     margin: 0;
-    color: #333;
+    color: var(--primary-color);
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .batch-action-btn,
   .add-config-btn {
     padding: 8px 16px;
-    background: #1890ff;
+    background: var(--accent-color);
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 14px;
+    transition: all 0.2s;
   }
 
   .batch-action-btn:hover,
   .add-config-btn:hover {
-    background: #40a9ff;
+    background: var(--accent-hover);
   }
 
   .batch-action-btn {
-    background: #52c41a;
+    background: #22c55e;
   }
 
   .batch-action-btn:hover {
-    background: #73d13d;
+    background: #16a34a;
   }
 
   .empty-state {
     text-align: center;
     padding: 40px 20px;
-    color: #999;
+    color: var(--text-tertiary);
   }
 
   .config-list {
@@ -737,20 +737,21 @@
   }
 
   .config-item {
-    border: 1px solid #e8e8e8;
-    border-radius: 6px;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
     padding: 16px;
     margin-bottom: 12px;
+    transition: all 0.2s;
   }
 
   .config-item.disabled {
     opacity: 0.6;
-    background: #fafafa;
+    background: var(--bg-secondary);
   }
 
   .config-item.selected {
-    border-color: #1890ff;
-    background: #f0f8ff;
+    border-color: var(--accent-color);
+    background: var(--accent-light);
   }
 
   .config-header {
@@ -772,15 +773,15 @@
 
   .config-name {
     font-weight: 600;
-    color: #333;
+    color: var(--primary-color);
   }
 
   .config-priority {
     font-size: 12px;
-    color: #666;
-    background: #f0f0f0;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
     padding: 2px 6px;
-    border-radius: 3px;
+    border-radius: 4px;
   }
 
   .config-actions {
@@ -793,50 +794,51 @@
   .priority-btn,
   .delete-btn {
     padding: 4px 8px;
-    border: 1px solid #ddd;
-    background: white;
-    border-radius: 4px;
+    border: 1px solid var(--border-primary);
+    background: var(--bg-primary);
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 12px;
+    transition: all 0.2s;
   }
 
   .toggle-btn.active {
-    background: #52c41a;
+    background: #22c55e;
     color: white;
-    border-color: #52c41a;
+    border-color: #22c55e;
   }
 
   .edit-btn:hover {
-    border-color: #1890ff;
-    color: #1890ff;
+    border-color: var(--accent-color);
+    color: var(--accent-color);
   }
 
   .priority-btn:hover {
-    border-color: #fa8c16;
-    color: #fa8c16;
+    border-color: var(--highlight-color);
+    color: var(--highlight-color);
   }
 
   .delete-btn:hover {
-    border-color: #ff4d4f;
-    color: #ff4d4f;
+    border-color: #ef4444;
+    color: #ef4444;
   }
 
   .config-content {
-    border-top: 1px solid #f0f0f0;
+    border-top: 1px solid var(--border-primary);
     padding-top: 12px;
   }
 
   .config-description {
     margin-bottom: 8px;
-    color: #666;
+    color: var(--text-secondary);
     font-size: 14px;
   }
 
   .optimization-prompt {
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     padding: 12px;
-    border-radius: 4px;
-    color: #333;
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     font-size: 13px;
     line-height: 1.4;
@@ -844,7 +846,6 @@
     word-break: break-word;
   }
 
-  /* 对话框样式 */
   .dialog-overlay {
     position: fixed;
     top: 0;
@@ -859,8 +860,8 @@
   }
 
   .dialog-content {
-    background: white;
-    border-radius: 8px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
     width: 90%;
     max-width: 600px;
     max-height: 90vh;
@@ -872,12 +873,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 20px 0 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-primary);
   }
 
   .dialog-header h3 {
     margin: 0;
-    color: #333;
+    color: var(--primary-color);
   }
 
   .close-btn {
@@ -885,7 +886,7 @@
     border: none;
     font-size: 24px;
     cursor: pointer;
-    color: #999;
+    color: var(--text-tertiary);
     padding: 0;
     width: 32px;
     height: 32px;
@@ -895,7 +896,7 @@
   }
 
   .close-btn:hover {
-    color: #333;
+    color: var(--primary-color);
   }
 
   .config-form {
@@ -909,8 +910,8 @@
   .form-group label {
     display: block;
     margin-bottom: 4px;
-    color: #333;
-    font-weight: 500;
+    color: var(--text-primary);
+    font-weight: 600;
   }
 
   .form-group input,
@@ -918,17 +919,20 @@
   .form-group textarea {
     width: 100%;
     padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-sm);
     font-size: 14px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: border-color 0.2s;
   }
 
   .form-group input:focus,
   .form-group select:focus,
   .form-group textarea:focus {
     outline: none;
-    border-color: #1890ff;
-    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+    border-color: var(--accent-color);
+    box-shadow: var(--shadow-glow);
   }
 
   .form-actions {
@@ -937,42 +941,42 @@
     gap: 12px;
     margin-top: 24px;
     padding-top: 16px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border-primary);
   }
 
   .cancel-btn,
   .save-btn {
     padding: 8px 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 14px;
+    transition: all 0.2s;
   }
 
   .cancel-btn {
-    background: white;
-    color: #666;
+    background: var(--bg-primary);
+    color: var(--text-secondary);
   }
 
   .cancel-btn:hover {
-    border-color: #999;
+    border-color: var(--text-tertiary);
   }
 
   .save-btn {
-    background: #1890ff;
+    background: var(--accent-color);
     color: white;
-    border-color: #1890ff;
+    border-color: var(--accent-color);
   }
 
   .save-btn:hover {
-    background: #40a9ff;
+    background: var(--accent-hover);
   }
 
-  /* 批量操作面板样式 */
   .batch-actions-panel {
-    background: #f8f9fa;
-    border: 1px solid #e8e8e8;
-    border-radius: 6px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
     padding: 12px;
     margin-bottom: 16px;
   }
@@ -990,7 +994,7 @@
   }
 
   .batch-info {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 14px;
   }
 
@@ -1006,40 +1010,41 @@
 
   .batch-btn {
     padding: 6px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 12px;
-    background: white;
+    background: var(--bg-primary);
+    transition: all 0.2s;
   }
 
   .batch-btn.enable {
-    color: #52c41a;
-    border-color: #52c41a;
+    color: #22c55e;
+    border-color: #22c55e;
   }
 
   .batch-btn.enable:hover {
-    background: #52c41a;
+    background: #22c55e;
     color: white;
   }
 
   .batch-btn.disable {
-    color: #ff4d4f;
-    border-color: #ff4d4f;
+    color: #ef4444;
+    border-color: #ef4444;
   }
 
   .batch-btn.disable:hover {
-    background: #ff4d4f;
+    background: #ef4444;
     color: white;
   }
 
   .batch-btn.cancel {
-    color: #666;
-    border-color: #ddd;
+    color: var(--text-secondary);
+    border-color: var(--border-primary);
   }
 
   .batch-btn.cancel:hover {
-    background: #f5f5f5;
+    background: var(--bg-secondary);
   }
 
   .batch-btn:disabled {
@@ -1047,7 +1052,6 @@
     cursor: not-allowed;
   }
 
-  /* 表单行样式 */
   .form-row {
     display: flex;
     gap: 16px;
@@ -1059,7 +1063,7 @@
 
   .form-hint {
     font-size: 12px;
-    color: #999;
+    color: var(--text-tertiary);
     margin-top: 4px;
     margin-bottom: 0;
   }

@@ -67,12 +67,12 @@ def add_newline(file):
 # Gets all the files in the current directory and returns a list of files
 def get_files():
     files_to_check = []
-    for root, dirs, files in os.walk('.'):
+    for , dirs, files in os.walk('.'):
         # Ignore the specified directory
         dirs[:] = [d for d in dirs if d not in ignore_dirs]
         for file in files:
             if not any(file.endswith(suffix) for suffix in ignore_suffix):
-                files_to_check.append(os.path.join(root, file))
+                files_to_check.append(os.path.join(, file))
     return files_to_check
 
 # Run the checks

@@ -375,11 +375,30 @@
   }
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>
+
+<style>
+  .el-header {
+    background-color: var(--bg-primary) !important;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-primary);
+    box-shadow: var(--shadow-xs);
+  }
+
+  .el-aside {
+    background-color: var(--bg-primary) !important;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-primary);
+    box-shadow: var(--shadow-xs);
+  }
+
+  .el-main {
+    background-color: var(--bg-primary) !important;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-primary);
+    box-shadow: var(--shadow-xs);
   }
 </style>

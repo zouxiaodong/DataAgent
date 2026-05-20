@@ -462,7 +462,6 @@
     gap: 8px;
   }
 
-  /* 会话列表样式 */
   .session-list {
     max-height: calc(100vh - 200px);
     overflow-y: auto;
@@ -471,26 +470,28 @@
 
   .session-item {
     padding: 16px;
-    border: 1px solid #e8e8e8;
-    border-radius: 8px;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
     margin-bottom: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: white;
+    background: var(--bg-primary);
   }
 
   .session-item:hover {
-    border-color: #409eff;
-    background-color: #f8fbff;
+    border-color: var(--accent-color);
+    background-color: var(--accent-light);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
   }
 
   .session-item.active {
-    border-color: #409eff;
-    background-color: #ecf5ff;
+    border-color: var(--accent-color);
+    background-color: var(--accent-light);
   }
 
   .session-item.pinned {
-    border-left: 4px solid #e6a23c;
+    border-left: 4px solid var(--highlight-color);
   }
 
   .session-header {
@@ -503,7 +504,7 @@
   .session-title {
     font-weight: 600;
     font-size: 14px;
-    color: #303133;
+    color: var(--primary-color);
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -519,10 +520,9 @@
 
   .session-time {
     font-size: 12px;
-    color: #909399;
+    color: var(--text-tertiary);
   }
 
-  /* 响应式设计 */
   @media (max-width: 768px) {
     .el-aside {
       width: 250px !important;

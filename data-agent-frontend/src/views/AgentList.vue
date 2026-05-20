@@ -342,37 +342,36 @@
 <style scoped>
   .agent-list-page {
     min-height: 100vh;
-    background: #f8fafc;
-    font-family:
-      -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg-layout);
+    font-family: var(--font-family);
   }
 
-  /* 主内容区域 */
   .main-content {
     width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 2rem;
   }
 
-  /* 内容头部 */
   .content-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     margin-bottom: 2rem;
   }
 
-  .header-info h1 {
+  .content-title {
     font-size: 2rem;
-    font-weight: 600;
-    color: #1f2937;
+    font-weight: 700;
+    color: var(--primary-color);
     margin: 0 0 0.5rem 0;
+    letter-spacing: -0.02em;
   }
 
-  .header-info p {
-    color: #6b7280;
+  .content-subtitle {
+    color: var(--text-secondary);
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .header-stats {
@@ -387,17 +386,16 @@
   .stat-number {
     font-size: 2rem;
     font-weight: 700;
-    color: #3b82f6;
+    color: var(--accent-color);
     line-height: 1;
   }
 
   .stat-label {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: var(--text-secondary);
     margin-top: 0.25rem;
   }
 
-  /* 过滤和搜索区域 */
   .filter-section {
     margin-bottom: 2rem;
   }
@@ -410,6 +408,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
   .filter-tabs {
@@ -428,33 +428,34 @@
   }
 
   .tab-count {
-    background: #f3f4f6;
-    color: #6b7280;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    color: inherit;
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-pill);
     font-size: 0.75rem;
     font-weight: 600;
     margin-left: 0.5rem;
   }
 
-  /* 智能体网格 */
-  .agents-grid {
-    margin-bottom: 2rem;
-  }
-
   .agent-card {
     cursor: pointer;
-    transition: all 0.2s ease;
-    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: var(--radius-xl) !important;
+    border: 1px solid var(--border-primary) !important;
+    background: var(--bg-primary) !important;
+    box-shadow: var(--shadow-xs) !important;
+    overflow: hidden;
   }
 
   .agent-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg) !important;
+    transform: translateY(-4px);
+    border-color: var(--accent-color) !important;
   }
 
   .agent-content {
     position: relative;
+    padding: 4px;
   }
 
   .agent-avatar {
@@ -463,22 +464,29 @@
     margin-bottom: 1rem;
   }
 
+  .agent-avatar :deep(.el-avatar) {
+    background: linear-gradient(135deg, var(--accent-color), var(--highlight-color)) !important;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+    font-weight: 700;
+  }
+
   .agent-info {
     text-align: center;
     margin-bottom: 1rem;
   }
 
   .agent-name {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #1f2937;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--primary-color);
     margin: 0 0 0.5rem 0;
+    letter-spacing: -0.01em;
   }
 
   .agent-description {
-    color: #6b7280;
+    color: var(--text-secondary);
     font-size: 0.875rem;
-    line-height: 1.5;
+    line-height: 1.6;
     margin: 0 0 0.75rem 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -491,7 +499,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 0.75rem;
-    color: #9ca3af;
+    color: var(--text-tertiary);
   }
 
   .agent-status {
@@ -500,15 +508,14 @@
     right: 1rem;
   }
 
-  /* 删除按钮 */
   .delete-button {
     position: absolute;
     top: 1rem;
     left: 1rem;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: rgba(239, 68, 68, 0.9);
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-base);
+    background: rgba(239, 68, 68, 0.85);
     color: white;
     display: flex;
     align-items: center;
@@ -520,7 +527,7 @@
   }
 
   .delete-button:hover {
-    background: rgba(220, 38, 38, 0.9);
+    background: rgba(220, 38, 38, 0.95);
     transform: scale(1.1);
   }
 
@@ -528,17 +535,14 @@
     opacity: 1;
   }
 
-  /* 加载状态 */
   .loading-state {
     padding: 4rem 2rem;
   }
 
-  /* 空状态 */
   .empty-state {
     padding: 4rem 2rem;
   }
 
-  /* 响应式设计 */
   @media (max-width: 768px) {
     .main-content {
       padding: 1rem;

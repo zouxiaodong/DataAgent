@@ -160,8 +160,28 @@
         </template>
       </el-table-column>
       <el-table-column prop="createTime" label="创建时间" min-width="100px" />
-      <el-table-column label="操作" min-width="120px">
+      <el-table-column label="操作" min-width="200px">
         <template #default="scope">
+          <el-button
+            @click="viewDatasource(scope.row)"
+            size="small"
+            type="info"
+            round
+            plain
+          >
+            <el-icon style="margin-right: 4px"><View /></el-icon>
+            查看
+          </el-button>
+          <el-button
+            @click="editDatasourceFromList(scope.row)"
+            size="small"
+            type="primary"
+            round
+            plain
+          >
+            <el-icon style="margin-right: 4px"><Edit /></el-icon>
+            编辑
+          </el-button>
           <el-button
             v-if="scope.row.status === 'active'"
             @click="changeDatasource(scope.row, false)"
@@ -384,6 +404,34 @@
         </div>
       </el-tab-pane>
     </el-tabs>
+  </el-dialog>
+  <el-dialog v-model="viewDialogVisible" title="查看数据源" width="800">
+    <el-descriptions :column="2" border>
+      <el-descriptions-item label="数据源ID">{{ viewingDatasource.id }}</el-descriptions-item>
+      <el-descriptions-item label="数据源名称">{{ viewingDatasource.name }}</el-descriptions-item>
+      <el-descriptions-item label="数据源类型">{{ viewingDatasource.type }}</el-descriptions-item>
+      <el-descriptions-item label="主机地址">{{ viewingDatasource.host }}</el-descriptions-item>
+      <el-descriptions-item label="端口号">{{ viewingDatasource.port }}</el-descriptions-item>
+      <el-descriptions-item label="数据库名">{{ viewingDatasource.databaseName }}</el-descriptions-item>
+      <el-descriptions-item label="用户名">{{ viewingDatasource.username }}</el-descriptions-item>
+      <el-descriptions-item label="连接状态">
+        <el-tag :type="viewingDatasource.testStatus === 'success' ? 'success' : 'danger'" round>
+          {{ viewingDatasource.testStatus === 'success' ? '连接成功' : '连接失败' }}
+        </el-tag>
+      </el-descriptions-item>
+      <el-descriptions-item label="状态">
+        <el-tag :type="viewingDatasource.status === 'active' ? 'success' : 'info'" round>
+          {{ viewingDatasource.status === 'active' ? '启用' : '禁用' }}
+        </el-tag>
+      </el-descriptions-item>
+      <el-descriptions-item label="创建时间">{{ viewingDatasource.createTime }}</el-descriptions-item>
+      <el-descriptions-item label="连接地址" :span="2">{{ viewingDatasource.connectionUrl || '-' }}</el-descriptions-item>
+      <el-descriptions-item label="描述" :span="2">{{ viewingDatasource.description || '-' }}</el-descriptions-item>
+    </el-descriptions>
+    <template #footer>
+      <el-button @click="viewDialogVisible = false">关闭</el-button>
+      <el-button type="primary" @click="viewDialogVisible = false; editDatasourceFromList(viewingDatasource)">编辑此数据源</el-button>
+    </template>
   </el-dialog>
   <el-dialog v-model="editDialogVisible" title="编辑数据源" width="1000">
     <el-row :gutter="20">
@@ -805,6 +853,7 @@
     Check,
     Right,
     Edit,
+    View,
   } from '@element-plus/icons-vue';
   import datasourceService from '@/services/datasource';
   import { Datasource, AgentDatasource, DatasourceType } from '@/services/datasource';
@@ -833,6 +882,10 @@
       const selectedDatasourceId: Ref<number | null> = ref(null);
       const editDialogVisible: Ref<boolean> = ref(false);
       const editingDatasource: Ref<Datasource> = ref({} as Datasource);
+
+      // 查看数据源相关状态
+      const viewDialogVisible: Ref<boolean> = ref(false);
+      const viewingDatasource: Ref<Datasource> = ref({} as Datasource);
 
       // PostgreSQL/Oracle 额外的schema字段
       const schemaName: Ref<string> = ref('');
@@ -1168,6 +1221,28 @@
           schemaNameEdit.value = '';
         }
         editDialogVisible.value = true;
+      };
+
+      // 查看数据源（只读）
+      const viewDatasource = (row: Datasource) => {
+        viewingDatasource.value = JSON.parse(JSON.stringify(row));
+        viewDialogVisible.value = true;
+      };
+
+      // 从列表编辑数据源（需要先获取完整详情）
+      const editDatasourceFromList = async (row: Datasource) => {
+        try {
+          // 先获取完整的数据源详情（包含密码等敏感信息）
+          const detail = await datasourceService.getDatasourceById(row.id!);
+          if (detail) {
+            editDatasource(detail);
+          } else {
+            ElMessage.error('获取数据源详情失败');
+          }
+        } catch (error) {
+          ElMessage.error('获取数据源详情失败');
+          console.error('Failed to get datasource detail:', error);
+        }
       };
 
       const saveEditDatasource = async () => {
@@ -1588,6 +1663,11 @@
         newDatasource,
         editDialogVisible,
         editingDatasource,
+        // 查看数据源
+        viewDialogVisible,
+        viewingDatasource,
+        viewDatasource,
+        editDatasourceFromList,
         tableLists,
         selectedTables,
         tableLoadingStates,
@@ -1622,6 +1702,7 @@
         Check,
         Right,
         Edit,
+        View,
         foreignKeyDialogVisible,
         currentForeignKeyDatasource,
         foreignKeyList,

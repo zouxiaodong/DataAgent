@@ -363,7 +363,7 @@
 <style scoped>
   .agent-create-page {
     padding: 20px;
-    background: #f8fafc;
+    background: var(--bg-layout);
     min-height: 100vh;
   }
 
@@ -373,13 +373,14 @@
 
   .page-header h2 {
     font-size: 24px;
-    font-weight: 600;
-    color: #1f2937;
+    font-weight: 700;
+    color: var(--primary-color);
     margin: 0 0 8px 0;
+    letter-spacing: -0.02em;
   }
 
   .page-header p {
-    color: #6b7280;
+    color: var(--text-secondary);
     margin: 0;
     font-size: 14px;
   }
@@ -392,7 +393,6 @@
     margin: 0 auto;
   }
 
-  /* 表单区域 */
   .form-section {
     display: flex;
     flex-direction: column;
@@ -400,11 +400,11 @@
   }
 
   .section-card {
-    background: white;
-    border-radius: 12px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
     padding: 24px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
+    box-shadow: var(--shadow-xs);
+    border: 1px solid var(--border-primary);
   }
 
   .section-header {
@@ -413,28 +413,28 @@
 
   .section-header h3 {
     font-size: 18px;
-    font-weight: 600;
-    color: #1f2937;
+    font-weight: 700;
+    color: var(--primary-color);
     margin: 0 0 8px 0;
+    letter-spacing: -0.01em;
   }
 
   .section-header p {
-    color: #6b7280;
+    color: var(--text-secondary);
     margin: 0;
     font-size: 14px;
   }
 
-  /* 底部操作按钮 */
   .bottom-actions {
     margin-top: 24px;
   }
 
   .bottom-actions .action-card {
-    background: white;
-    border-radius: 12px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
     padding: 24px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
+    box-shadow: var(--shadow-xs);
+    border: 1px solid var(--border-primary);
   }
 
   .bottom-actions .form-actions {
@@ -443,7 +443,6 @@
     justify-content: flex-end;
   }
 
-  /* 表单样式 */
   .form-group {
     margin-bottom: 25px;
   }
@@ -451,9 +450,9 @@
   .form-group label {
     display: block;
     margin-bottom: 10px;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 15px;
-    color: #374151;
+    color: var(--text-primary);
   }
 
   .form-item {
@@ -463,9 +462,9 @@
   .form-item label {
     display: block;
     margin-bottom: 10px;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 15px;
-    color: #374151;
+    color: var(--text-primary);
   }
 
   .form-switch {
@@ -473,7 +472,7 @@
     align-items: center;
     gap: 12px;
     font-size: 15px;
-    color: #374151;
+    color: var(--text-primary);
   }
 
   .form-actions {
@@ -482,7 +481,6 @@
     justify-content: flex-end;
   }
 
-  /* 头像上传样式 */
   .avatar-upload {
     display: flex;
     gap: 1rem;
@@ -492,10 +490,10 @@
   .avatar-preview {
     width: 80px;
     height: 80px;
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    border: 2px solid #e5e7eb;
-    background: white;
+    border: 2px solid var(--border-primary);
+    background: var(--bg-primary);
   }
 
   .avatar-preview img {
@@ -514,7 +512,6 @@
     flex-wrap: wrap;
   }
 
-  /* 响应式设计 */
   @media (max-width: 768px) {
     .agent-create-page {
       padding: 16px;
