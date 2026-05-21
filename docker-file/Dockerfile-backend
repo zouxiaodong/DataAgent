@@ -47,7 +47,7 @@ COPY . /app/DataAgent
 
 # 进入项目目录并构建
 WORKDIR /app/DataAgent
-RUN mvn install -DskipTests
+RUN mvn install -DskipTests -Dspotless.apply.skip=true
 #    mvn install -DskipTests -s ../aliyun-settings.xml
 
 FROM eclipse-temurin:17-jdk-jammy
