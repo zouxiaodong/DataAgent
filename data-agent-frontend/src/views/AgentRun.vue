@@ -219,6 +219,7 @@
                 :onQuestionClick="handlePresetQuestionClick"
               />
               <div class="switch-group">
+                <!--
                 <div class="switch-item">
                   <span class="switch-label">人工反馈</span>
                   <el-tooltip
@@ -232,6 +233,7 @@
                     />
                   </el-tooltip>
                 </div>
+                -->
                 <div class="switch-item">
                   <span class="switch-label">仅NL2SQL</span>
                   <el-switch
