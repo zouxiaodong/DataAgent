@@ -470,7 +470,7 @@
 
   .page-header p {
     margin: 0;
-    color: #606266;
+    color: var(--text-secondary);
     line-height: 1.6;
   }
 
@@ -481,9 +481,11 @@
   }
 
   .config-section {
-    background: #fff;
-    border: 1px solid #ebeef5;
-    border-radius: 12px;
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-xl);
     padding: 20px;
   }
 
@@ -501,7 +503,7 @@
   }
 
   .section-title span {
-    color: #606266;
+    color: var(--text-secondary);
     line-height: 1.6;
   }
 
@@ -545,13 +547,13 @@
     flex-wrap: wrap;
     gap: 8px 12px;
     margin-top: 8px;
-    color: #909399;
+    color: var(--text-tertiary);
     font-size: 12px;
   }
 
   .skill-description {
     margin: 0;
-    color: #606266;
+    color: var(--text-secondary);
     line-height: 1.7;
     white-space: pre-wrap;
   }
@@ -567,7 +569,7 @@
   .table-subtitle {
     margin-top: 4px;
     font-size: 12px;
-    color: #909399;
+    color: var(--text-tertiary);
   }
 
   .table-actions {
@@ -588,12 +590,12 @@
   }
 
   .empty-resource {
-    color: #909399;
+    color: var(--text-tertiary);
   }
 
   .field-tip {
     margin-top: 6px;
-    color: #909399;
+    color: var(--text-tertiary);
     font-size: 12px;
     line-height: 1.5;
   }
@@ -608,5 +610,52 @@
     .header-actions {
       width: 100%;
     }
+  }
+
+  /* Element Plus dark overrides */
+  :deep(.el-button--primary) {
+    background: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+  }
+
+  :deep(.el-dialog) {
+    background: var(--bg-glass) !important;
+    border: 1px solid var(--border-glass);
+    backdrop-filter: var(--backdrop-blur);
+  }
+  :deep(.el-dialog__title) { color: var(--text-primary) !important; }
+  :deep(.el-dialog__body) { color: var(--text-secondary) !important; }
+
+  :deep(.el-input__wrapper) {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border-color: var(--border-glass) !important;
+    box-shadow: none !important;
+  }
+  :deep(.el-input__inner) { color: var(--text-primary) !important; }
+  :deep(.el-form-item__label) { color: var(--text-secondary) !important; }
+
+  :deep(.el-textarea__inner) {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border-color: var(--border-glass) !important;
+    color: var(--text-primary) !important;
+  }
+
+  :deep(.el-table) {
+    background: transparent !important;
+    --el-table-border-color: var(--border-glass);
+    --el-table-header-bg-color: var(--bg-glass-hover);
+  }
+  :deep(.el-table th) { background: var(--bg-glass-hover) !important; color: var(--text-primary) !important; }
+  :deep(.el-table td) { color: var(--text-secondary); }
+
+  :deep(.el-tag) {
+    background: var(--accent-light) !important;
+    border-color: var(--border-glass) !important;
+    color: var(--accent-color) !important;
+  }
+
+  :deep(.el-card) {
+    background: var(--bg-glass) !important;
+    border-color: var(--border-glass) !important;
   }
 </style>

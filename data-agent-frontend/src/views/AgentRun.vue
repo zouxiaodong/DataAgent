@@ -2752,7 +2752,7 @@
     flex: 1;
     overflow-y: auto;
     padding: 20px;
-    background: #f8f9fa;
+    background: transparent;
     border-radius: 8px;
     margin-bottom: 20px;
   }
@@ -2760,10 +2760,10 @@
   .clarify-banner {
     margin-bottom: 12px;
     padding: 14px 16px;
-    border: 1px solid #f7c56b;
+    border: 1px solid rgba(251, 191, 36, 0.3);
     border-radius: 12px;
-    background: linear-gradient(135deg, #fff8e8 0%, #fff3d4 100%);
-    box-shadow: 0 8px 18px rgba(196, 138, 18, 0.08);
+    background: rgba(251, 191, 36, 0.1);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
   }
 
   .clarify-banner-header {
@@ -2862,11 +2862,11 @@
 
   .markdown-report {
     line-height: 1.6;
-    color: #1f2933;
+    color: var(--text-primary);
   }
 
   .markdown-report pre {
-    background: #f6f8fa;
+    background: rgba(15, 23, 42, 0.6);
     padding: 10px 12px;
     border-radius: 6px;
     overflow: auto;
@@ -2885,20 +2885,24 @@
   }
 
   .message.user .message-text {
-    background: #409eff;
+    background: var(--accent-color);
     color: white;
   }
 
   .message.assistant .message-text {
-    background: white;
-    color: #303133;
-    border: 1px solid #e8e8e8;
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    color: var(--text-primary);
+    border: 1px solid var(--border-glass);
   }
 
   /* 流式响应样式 */
   .streaming-response {
-    background: white;
-    border: 1px solid #e8e8e8;
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
     border-radius: 8px;
     padding: 16px;
   }
@@ -2909,17 +2913,17 @@
     gap: 8px;
     margin-bottom: 12px;
     padding-bottom: 8px;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--border-glass);
   }
 
   .loading-icon {
     animation: spin 1s linear infinite;
-    color: #409eff;
+    color: var(--accent-color);
   }
 
   .streaming-header span {
     font-weight: 500;
-    color: #409eff;
+    color: var(--accent-color);
   }
 
   .stop-button-inline {
@@ -2935,24 +2939,24 @@
   }
 
   .agent-response-block {
-    background: #f8f9fa;
-    border: 1px solid #e8e8e8;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
     border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
   }
 
   .agent-response-block:hover {
-    border-color: #409eff;
-    box-shadow: 0 2px 8px rgba(64, 158, 255, 0.1);
+    border-color: var(--accent-color);
+    box-shadow: 0 2px 8px rgba(96, 165, 250, 0.2);
   }
 
   .agent-response-title {
-    background: #ecf5ff;
+    background: var(--accent-light);
     padding: 12px 16px;
     font-weight: 600;
-    color: #409eff;
-    border-bottom: 1px solid #e8e8e8;
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--border-glass);
     font-size: 14px;
   }
 
@@ -3745,17 +3749,17 @@
   }
 
   .trace-message-group {
-    border: 2px solid #e0ebf8;
+    border: 2px solid var(--border-glass);
     border-radius: 16px;
     overflow: hidden;
-    background: #ffffff;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    background: var(--bg-glass);
+    box-shadow: var(--shadow-glass);
     transition: all 0.3s ease;
   }
 
   .trace-message-group:hover {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border-color: #c9dff5;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border-color: var(--border-glass-hover);
   }
 
   .trace-message-group-header {
@@ -3764,23 +3768,23 @@
     align-items: center;
     gap: 14px;
     padding: 14px 16px;
-    background: linear-gradient(135deg, #f5f9ff 0%, #eef6ff 100%);
-    border-bottom: 2px solid #e0ebf8;
+    background: var(--bg-glass-hover);
+    border-bottom: 2px solid var(--border-glass);
   }
 
   .trace-message-group-title {
-    color: #1e3a5f;
+    color: var(--text-primary);
     font-size: 14px;
     font-weight: 700;
   }
 
   .trace-message-group-meta {
-    color: #5a7291;
+    color: var(--text-secondary);
     font-size: 12px;
     font-weight: 600;
     font-family: 'JetBrains Mono', 'Fira Code', monospace;
     padding: 4px 12px;
-    background: rgba(64, 158, 255, 0.1);
+    background: var(--accent-light);
     border-radius: 999px;
   }
 
@@ -4144,17 +4148,17 @@
 <style>
   /* 结果集表格样式 */
   .result-set-container {
-    background: white;
-    border: 1px solid #e8e8e8;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
     border-radius: 8px;
     overflow: hidden;
     margin: 8px 0;
   }
 
   .result-set-header {
-    background: #f8f9fa;
+    background: var(--bg-glass-hover);
     padding: 12px 16px;
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: 1px solid var(--border-glass);
   }
 
   .result-set-info {
@@ -4162,7 +4166,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 14px;
-    color: #606266;
+    color: var(--text-secondary);
   }
 
   .result-set-pagination-controls {
@@ -4173,7 +4177,7 @@
 
   .result-set-pagination-info {
     font-size: 14px;
-    color: #606266;
+    color: var(--text-secondary);
   }
 
   .result-set-pagination-buttons {
@@ -4183,23 +4187,24 @@
 
   .result-set-pagination-btn {
     padding: 6px 12px;
-    border: 1px solid #dcdfe6;
-    background: white;
+    border: 1px solid var(--border-glass);
+    background: var(--bg-glass);
     border-radius: 4px;
     font-size: 12px;
     cursor: pointer;
     transition: all 0.3s;
+    color: var(--text-secondary);
   }
 
   .result-set-pagination-btn:hover:not(:disabled) {
-    background: #f5f7fa;
-    border-color: #c6e2ff;
+    background: var(--bg-glass-hover);
+    border-color: var(--border-glass-hover);
   }
 
   .result-set-pagination-btn:disabled {
-    color: #c0c4cc;
+    color: var(--text-disabled);
     cursor: not-allowed;
-    background: #f5f7fa;
+    background: var(--bg-glass);
   }
 
   .result-set-table-container {

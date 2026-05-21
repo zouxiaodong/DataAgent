@@ -357,16 +357,18 @@ requests.post(
   }
 
   .desc {
-    color: #666;
+    color: var(--text-secondary);
     margin: 4px 0 12px;
   }
 
   .card {
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
     padding: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-xs);
   }
 
   .row {
@@ -378,7 +380,7 @@ requests.post(
 
   .label {
     width: 110px;
-    color: #333;
+    color: var(--text-primary);
     font-weight: 600;
   }
 
@@ -392,10 +394,13 @@ requests.post(
   }
 
   .code {
-    background: #0b1021;
-    color: #e0e6f6;
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
+    color: var(--text-primary);
     padding: 14px;
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     overflow: auto;
     font-size: 12px;
   }

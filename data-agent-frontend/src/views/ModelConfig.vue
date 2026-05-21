@@ -668,21 +668,21 @@
 </script>
 
 <style scoped>
+  /* Page wrapper */
   .model-config-page {
+    background: var(--gradient-bg);
     min-height: 100vh;
-    background: #f8fafc;
-    font-family:
-      -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-family);
   }
 
-  /* 主内容区域 */
+  /* Content area */
   .main-content {
-    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
   }
 
-  /* 内容头部 */
+  /* Header */
   .content-header {
     display: flex;
     justify-content: space-between;
@@ -692,18 +692,19 @@
 
   .header-info h1 {
     font-size: 2rem;
-    font-weight: 600;
-    color: #1f2937;
+    font-weight: 700;
+    color: var(--text-primary);
     margin: 0 0 0.5rem 0;
+    letter-spacing: -0.02em;
   }
 
   .header-info p {
-    color: #6b7280;
+    color: var(--text-secondary);
     margin: 0;
     font-size: 1.1rem;
   }
 
-  /* 操作区域 */
+  /* Action section */
   .action-section {
     margin-bottom: 2rem;
   }
@@ -725,9 +726,14 @@
     gap: 1rem;
   }
 
-  /* 配置表格 */
+  /* Config table wrapper - glassmorphism */
   .config-table {
     margin-bottom: 2rem;
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
   }
 
   .action-buttons-cell {
@@ -735,30 +741,50 @@
     gap: 0.5rem;
   }
 
-  /* 加载状态 */
   .loading-state {
     padding: 4rem 2rem;
   }
 
-  /* 空状态 */
   .empty-state {
     padding: 4rem 2rem;
   }
 
-  /* 表单提示 */
   .form-tip {
     font-size: 0.75rem;
-    color: #6b7280;
+    color: var(--text-secondary);
     margin-top: 0.25rem;
   }
 
-  /* 文本样式 */
   .text-muted {
-    color: #9ca3af;
+    color: var(--text-tertiary);
     font-style: italic;
   }
 
-  /* 响应式设计 */
+  /* Element Plus table overrides */
+  :deep(.el-table) {
+    background: transparent !important;
+    --el-table-border-color: var(--border-glass) !important;
+  }
+
+  :deep(.el-table th) {
+    background: rgba(15, 23, 42, 0.5) !important;
+    color: var(--text-primary) !important;
+  }
+
+  :deep(.el-table td) {
+    color: var(--text-secondary) !important;
+    border-color: var(--border-glass) !important;
+  }
+
+  :deep(.el-table--enable-row-hover .el-table__body tr:hover > td) {
+    background: var(--bg-glass-hover) !important;
+  }
+
+  :deep(.el-table__empty-text) {
+    color: var(--text-tertiary) !important;
+  }
+
+  /* Responsive */
   @media (max-width: 768px) {
     .main-content {
       padding: 1rem;

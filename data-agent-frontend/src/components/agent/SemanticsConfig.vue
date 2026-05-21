@@ -593,4 +593,61 @@
   });
 </script>
 
-<style scoped></style>
+<style scoped>
+  h2, h3, h4 { color: var(--text-primary); }
+
+  :deep(.el-table) {
+    background: transparent !important;
+    --el-table-border-color: var(--border-glass);
+    --el-table-header-bg-color: var(--bg-glass-hover);
+    --el-table-tr-hover-bg-color: var(--bg-glass-hover);
+  }
+  :deep(.el-table th) { background: var(--bg-glass-hover) !important; color: var(--text-primary) !important; }
+  :deep(.el-table td) { color: var(--text-secondary); }
+
+  :deep(.el-button--primary) {
+    background: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+  }
+
+  :deep(.el-dialog) {
+    background: var(--bg-glass) !important;
+    border: 1px solid var(--border-glass);
+    backdrop-filter: var(--backdrop-blur);
+  }
+  :deep(.el-dialog__title) { color: var(--text-primary) !important; }
+  :deep(.el-dialog__body) { color: var(--text-secondary) !important; }
+
+  :deep(.el-input__wrapper) {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border-color: var(--border-glass) !important;
+    box-shadow: none !important;
+  }
+  :deep(.el-input__inner) { color: var(--text-primary) !important; }
+  :deep(.el-form-item__label) { color: var(--text-secondary) !important; }
+
+  :deep(.el-tag) {
+    background: var(--accent-light) !important;
+    border-color: var(--border-glass) !important;
+    color: var(--accent-color) !important;
+  }
+
+  :deep(.el-select-dropdown) {
+    background: var(--bg-glass) !important;
+    border-color: var(--border-glass) !important;
+  }
+  :deep(.el-select-dropdown__item) { color: var(--text-secondary) !important; }
+  :deep(.el-select-dropdown__item.is-selected) { color: var(--accent-color) !important; }
+
+  :deep(.el-checkbox__label) { color: var(--text-secondary) !important; }
+  :deep(.el-checkbox__inner) {
+    border-color: var(--border-glass) !important;
+    background: rgba(15, 23, 42, 0.6) !important;
+  }
+
+  :deep(.el-pagination) {
+    --el-pagination-bg-color: var(--bg-glass);
+    --el-pagination-text-color: var(--text-secondary);
+    --el-pagination-button-color: var(--text-secondary);
+  }
+</style>

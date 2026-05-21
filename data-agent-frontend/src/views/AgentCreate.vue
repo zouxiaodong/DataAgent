@@ -99,12 +99,12 @@
             <el-row :gutter="20">
               <el-col :span="24">
                 <div class="form-item">
-                  <label>系统提示词</label>
+                  <label>智能体Prompt</label>
                   <el-input
                     v-model="agentForm.prompt"
                     :rows="4"
                     type="textarea"
-                    placeholder="请输入系统提示词"
+                    placeholder="请输入智能体Prompt"
                     size="large"
                   />
                 </div>
@@ -361,141 +361,146 @@
 </script>
 
 <style scoped>
+  /* Page wrapper — dark gradient background */
   .agent-create-page {
-    padding: 20px;
-    background: #f8fafc;
+    background: var(--gradient-bg);
     min-height: 100vh;
+    padding: 2rem;
   }
 
-  .page-header {
-    margin-bottom: 20px;
-  }
-
-  .page-header h2 {
-    font-size: 24px;
-    font-weight: 600;
-    color: #1f2937;
-    margin: 0 0 8px 0;
-  }
-
-  .page-header p {
-    color: #6b7280;
-    margin: 0;
-    font-size: 14px;
-  }
-
+  /* Form container */
   .create-form-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
     max-width: 800px;
     margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
   }
 
-  /* 表单区域 */
+  /* Form section */
   .form-section {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: var(--space-xl);
   }
 
+  /* Glass card for form */
   .section-card {
-    background: white;
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-glass);
+    padding: var(--space-2xl);
+    transition: all var(--transition-base);
   }
 
+  .section-card:hover {
+    border-color: var(--border-glass-hover);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Section header */
   .section-header {
-    margin-bottom: 24px;
+    margin-bottom: var(--space-xl);
   }
 
   .section-header h3 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #1f2937;
-    margin: 0 0 8px 0;
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    margin: 0 0 var(--space-sm) 0;
+    letter-spacing: -0.02em;
   }
 
   .section-header p {
-    color: #6b7280;
+    color: var(--text-secondary);
     margin: 0;
-    font-size: 14px;
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
   }
 
-  /* 底部操作按钮 */
+  /* Bottom actions — glass card */
   .bottom-actions {
-    margin-top: 24px;
+    margin-top: var(--space-xl);
   }
 
   .bottom-actions .action-card {
-    background: white;
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-glass);
+    padding: var(--space-xl);
   }
 
   .bottom-actions .form-actions {
     display: flex;
-    gap: 12px;
+    gap: var(--space-md);
     justify-content: flex-end;
   }
 
-  /* 表单样式 */
+  /* Form groups */
   .form-group {
-    margin-bottom: 25px;
+    margin-bottom: var(--space-xl);
   }
 
   .form-group label {
     display: block;
-    margin-bottom: 10px;
-    font-weight: 500;
-    font-size: 15px;
-    color: #374151;
+    margin-bottom: var(--space-base);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
   }
 
+  /* Form items */
   .form-item {
-    margin-bottom: 25px;
+    margin-bottom: var(--space-xl);
   }
 
   .form-item label {
     display: block;
-    margin-bottom: 10px;
-    font-weight: 500;
-    font-size: 15px;
-    color: #374151;
+    margin-bottom: var(--space-base);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
   }
 
+  /* Form switch */
   .form-switch {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 15px;
-    color: #374151;
+    gap: var(--space-md);
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
   }
 
+  /* Form actions */
   .form-actions {
     display: flex;
-    gap: 12px;
+    gap: var(--space-md);
     justify-content: flex-end;
   }
 
-  /* 头像上传样式 */
+  /* Avatar upload */
   .avatar-upload {
     display: flex;
-    gap: 1rem;
+    gap: var(--space-lg);
     align-items: flex-start;
   }
 
   .avatar-preview {
     width: 80px;
     height: 80px;
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    border: 2px solid #e5e7eb;
-    background: white;
+    border: 2px solid var(--border-glass);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
   }
 
   .avatar-preview img {
@@ -510,19 +515,160 @@
 
   .avatar-buttons {
     display: flex;
-    gap: 0.5rem;
+    gap: var(--space-sm);
     flex-wrap: wrap;
   }
 
-  /* 响应式设计 */
+  /* ========================================
+     Element Plus overrides — Dark Glassmorphism
+     ======================================== */
+
+  :deep(.el-form-item__label) {
+    color: var(--text-primary) !important;
+  }
+
+  :deep(.el-input__wrapper) {
+    background: var(--bg-glass) !important;
+    border-color: var(--border-glass) !important;
+    box-shadow: none !important;
+  }
+
+  :deep(.el-input__wrapper:hover) {
+    border-color: var(--border-glass-hover) !important;
+  }
+
+  :deep(.el-input__wrapper.is-focus) {
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 1px var(--accent-color) !important;
+  }
+
+  :deep(.el-input__inner) {
+    color: var(--text-primary) !important;
+  }
+
+  :deep(.el-input__inner::placeholder) {
+    color: var(--text-tertiary) !important;
+  }
+
+  :deep(.el-textarea__inner) {
+    background: var(--bg-glass) !important;
+    border-color: var(--border-glass) !important;
+    color: var(--text-primary) !important;
+    box-shadow: none !important;
+  }
+
+  :deep(.el-textarea__inner:hover) {
+    border-color: var(--border-glass-hover) !important;
+  }
+
+  :deep(.el-textarea__inner:focus) {
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 1px var(--accent-color) !important;
+  }
+
+  :deep(.el-textarea__inner::placeholder) {
+    color: var(--text-tertiary) !important;
+  }
+
+  :deep(.el-select .el-input__wrapper) {
+    background: var(--bg-glass) !important;
+    border-color: var(--border-glass) !important;
+  }
+
+  :deep(.el-select .el-input__inner) {
+    color: var(--text-primary) !important;
+  }
+
+  /* Step indicators — active step accent */
+  :deep(.el-step.is-process .el-step__icon) {
+    background: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+    color: #fff !important;
+  }
+
+  :deep(.el-step.is-process .el-step__title) {
+    color: var(--text-primary) !important;
+  }
+
+  :deep(.el-step.is-finish .el-step__icon) {
+    background: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+  }
+
+  :deep(.el-step__icon) {
+    background: var(--bg-glass) !important;
+    border-color: var(--border-glass) !important;
+    color: var(--text-secondary) !important;
+  }
+
+  :deep(.el-step__title) {
+    color: var(--text-secondary) !important;
+  }
+
+  :deep(.el-step__description) {
+    color: var(--text-tertiary) !important;
+  }
+
+  /* Button overrides */
+  :deep(.el-button--primary) {
+    background: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+    border-radius: var(--radius-pill) !important;
+    color: #fff !important;
+  }
+
+  :deep(.el-button--primary:hover) {
+    background: var(--accent-hover) !important;
+    border-color: var(--accent-hover) !important;
+  }
+
+  :deep(.el-button--default) {
+    background: var(--bg-glass) !important;
+    border-color: var(--border-glass) !important;
+    color: var(--text-secondary) !important;
+    border-radius: var(--radius-pill) !important;
+  }
+
+  :deep(.el-button--default:hover) {
+    background: var(--bg-glass-hover) !important;
+    border-color: var(--border-glass-hover) !important;
+    color: var(--text-primary) !important;
+  }
+
+  /* Dropdown / select popup */
+  :deep(.el-select-dropdown) {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-glass) !important;
+    box-shadow: var(--shadow-glass) !important;
+  }
+
+  :deep(.el-select-dropdown__item) {
+    color: var(--text-secondary) !important;
+  }
+
+  :deep(.el-select-dropdown__item:hover) {
+    background: var(--accent-light) !important;
+    color: var(--accent-color) !important;
+  }
+
+  :deep(.el-select-dropdown__item.is-selected) {
+    color: var(--accent-color) !important;
+    font-weight: var(--font-weight-semibold) !important;
+  }
+
+  /* Responsive */
   @media (max-width: 768px) {
     .agent-create-page {
-      padding: 16px;
+      padding: var(--space-md);
+    }
+
+    .create-form-wrapper {
+      padding: var(--space-md);
     }
 
     .section-card,
     .bottom-actions .action-card {
-      padding: 20px;
+      padding: var(--space-lg);
     }
 
     .avatar-upload {

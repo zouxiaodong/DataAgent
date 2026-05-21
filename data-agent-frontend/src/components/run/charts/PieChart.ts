@@ -56,17 +56,23 @@ export class PieChart extends BaseChart {
     }
 
     const option: echarts.EChartsOption = {
+      backgroundColor: 'transparent',
       title: {
         text: this._name || '饼图',
         left: 'center',
+        textStyle: { color: '#f1f5f9' },
       },
       tooltip: {
         trigger: 'item',
         formatter: '{a} <br/>{b}: {c} ({d}%)',
+        backgroundColor: 'rgba(30, 41, 59, 0.95)',
+        borderColor: '#334155',
+        textStyle: { color: '#f1f5f9' },
       },
       legend: {
         orient: 'horizontal',
         bottom: 0,
+        textStyle: { color: '#cbd5e1' },
       },
       series: [
         {

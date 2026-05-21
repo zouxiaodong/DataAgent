@@ -165,5 +165,10 @@
     height: 400px;
     max-height: 400px;
     margin: 0 auto;
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
   }
 </style>

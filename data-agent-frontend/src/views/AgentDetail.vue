@@ -16,9 +16,9 @@
 
 <template>
   <BaseLayout>
-    <el-container style="margin-top: 20px; gap: 10px">
+    <el-container class="detail-container">
       <!-- 设置 header -->
-      <el-header style="background-color: white; margin-bottom: 20px">
+      <el-header class="detail-header">
         <el-row :gutter="20" align="middle">
           <el-col :span="1">
             <el-button
@@ -63,9 +63,9 @@
         </el-row>
         <el-divider />
       </el-header>
-      <el-container style="gap: 10px">
+      <el-container class="detail-body">
         <!-- 左侧菜单 -->
-        <el-aside width="200px" style="background-color: white">
+        <el-aside width="200px" class="detail-aside">
           <el-menu
             :default-active="activeMenuIndex"
             class="el-menu-vertical-demo"
@@ -121,7 +121,7 @@
             </el-menu-item-group>
           </el-menu>
         </el-aside>
-        <el-main style="background-color: white">
+        <el-main class="detail-main">
           <!-- 右侧内容 -->
           <AgentBaseSetting v-if="activeMenuIndex === 'basic'" :agent="agent"></AgentBaseSetting>
           <AgentDataSourceConfig
@@ -368,11 +368,77 @@
   }
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Glass layout */
+  .detail-container {
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  .detail-header {
+    background: var(--bg-glass) !important;
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-xl);
+    margin-bottom: 20px;
+    height: auto !important;
+    padding: 1rem 1.5rem;
+  }
+
+  .detail-header h2 {
+    color: var(--text-primary);
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .detail-header :deep(.el-divider) {
+    border-color: var(--border-glass);
+  }
+
+  .detail-body {
+    gap: 10px;
+  }
+
+  .detail-aside {
+    background: var(--bg-glass) !important;
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-xl);
+    padding: 0.5rem;
+  }
+
+  .detail-aside :deep(.el-menu) {
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .detail-aside :deep(.el-menu-item),
+  .detail-aside :deep(.el-menu-item-group__title) {
+    color: var(--text-secondary) !important;
+  }
+
+  .detail-aside :deep(.el-menu-item:hover) {
+    background: var(--bg-glass-hover) !important;
+    color: var(--accent-color) !important;
+  }
+
+  .detail-aside :deep(.el-menu-item.is-active) {
+    background: var(--accent-light) !important;
+    color: var(--accent-color) !important;
+    border-radius: var(--radius-md);
+  }
+
+  .detail-main {
+    background: var(--bg-glass) !important;
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-xl);
+    min-height: 600px;
   }
 </style>

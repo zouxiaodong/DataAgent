@@ -278,7 +278,7 @@
         }
 
         try {
-          await ChatService.renameSession(session.id, Number(agentId.value), newTitle);
+          await ChatService.renameSession(session.id, newTitle);
           session.title = newTitle;
           session.editing = false;
           ElMessage.success('会话标题已更新');
@@ -296,30 +296,6 @@
       // 计算属性
       const agentId = computed(() => route.params.id as string);
 
-      const parseAgentId = (value: unknown): number | null => {
-        if (typeof value === 'number' && Number.isFinite(value)) {
-          return value;
-        }
-        if (typeof value === 'string' && value.trim()) {
-          const parsed = Number(value);
-          return Number.isFinite(parsed) ? parsed : null;
-        }
-        return null;
-      };
-
-      const getRouteAgentId = (): number | null => {
-        const rawAgentId = route.params.id;
-        return parseAgentId(Array.isArray(rawAgentId) ? rawAgentId[0] : rawAgentId);
-      };
-
-      const requireRouteAgentId = (): number => {
-        const resolvedAgentId = getRouteAgentId();
-        if (resolvedAgentId === null) {
-          throw new Error('智能体ID无效，请刷新后重试');
-        }
-        return resolvedAgentId;
-      };
-
       // 方法
       const goBack = () => {
         router.push(`/agent/${agentId.value}`);
@@ -327,7 +303,7 @@
 
       const loadSessions = async () => {
         try {
-          sessions.value = await ChatService.getAgentSessions(requireRouteAgentId());
+          sessions.value = await ChatService.getAgentSessions(parseInt(agentId.value));
           // 默认选择第一个会话或创建新会话
           if (sessions.value.length > 0) {
             await props.handleSelectSession(sessions.value[0]);
@@ -342,7 +318,7 @@
 
       const createNewSession = async () => {
         try {
-          const newSession = await ChatService.createSession(requireRouteAgentId(), '新会话');
+          const newSession = await ChatService.createSession(parseInt(agentId.value), '新会话');
           sessions.value.unshift(newSession);
           await props.handleSelectSession(newSession);
           ElMessage.success('新会话创建成功');
@@ -354,7 +330,7 @@
 
       const togglePinSession = async (session: ChatSession) => {
         try {
-          await ChatService.pinSession(session.id, requireRouteAgentId(), !session.isPinned);
+          await ChatService.pinSession(session.id, !session.isPinned);
           session.isPinned = !session.isPinned;
           ElMessage.success(session.isPinned ? '会话已置顶' : '会话已取消置顶');
         } catch (error) {
@@ -370,7 +346,7 @@
             cancelButtonText: '取消',
             type: 'warning',
           });
-          await ChatService.deleteSession(session.id, requireRouteAgentId());
+          await ChatService.deleteSession(session.id);
           props.handleDeleteSessionState(session.id);
           sessions.value = sessions.value.filter((s: ChatSession) => s.id !== session.id);
           if (props.handleGetCurrentSession() == session) {
@@ -392,7 +368,7 @@
             cancelButtonText: '取消',
             type: 'warning',
           });
-          await ChatService.clearAgentSessions(requireRouteAgentId());
+          await ChatService.clearAgentSessions(parseInt(agentId.value));
           sessions.value.forEach((session: ChatSession) => {
             props.handleDeleteSessionState(session.id);
           });
@@ -441,8 +417,10 @@
 
 <style scoped>
   .chat-session-sidebar {
-    background-color: white;
-    border-right: 1px solid #e8e8e8;
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border-right: 1px solid var(--border-glass);
     transition: width 0.3s ease;
     overflow: hidden;
   }
@@ -486,7 +464,6 @@
     gap: 8px;
   }
 
-  /* 会话列表样式 */
   .session-list {
     max-height: calc(100vh - 200px);
     overflow-y: auto;
@@ -495,26 +472,30 @@
 
   .session-item {
     padding: 16px;
-    border: 1px solid #e8e8e8;
-    border-radius: 8px;
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
     margin-bottom: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: white;
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
   }
 
   .session-item:hover {
-    border-color: #409eff;
-    background-color: #f8fbff;
+    border-color: var(--border-glass-hover);
+    background: var(--bg-glass-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-glass);
   }
 
   .session-item.active {
-    border-color: #409eff;
-    background-color: #ecf5ff;
+    border-color: var(--accent-color);
+    background: var(--accent-light);
   }
 
   .session-item.pinned {
-    border-left: 4px solid #e6a23c;
+    border-left: 4px solid var(--highlight-color);
   }
 
   .session-header {
@@ -527,7 +508,7 @@
   .session-title {
     font-weight: 600;
     font-size: 14px;
-    color: #303133;
+    color: var(--text-primary);
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -543,10 +524,9 @@
 
   .session-time {
     font-size: 12px;
-    color: #909399;
+    color: var(--text-tertiary);
   }
 
-  /* 响应式设计 */
   @media (max-width: 768px) {
     .el-aside {
       width: 250px !important;
