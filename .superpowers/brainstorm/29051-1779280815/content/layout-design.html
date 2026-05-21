@@ -1,0 +1,41 @@
+<h2>布局设计方案</h2>
+<p class="subtitle">当前系统包含 5 个核心页面，需要全新设计布局结构</p>
+
+<div class="section">
+  <h3>当前页面清单</h3>
+  <ul style="list-style:none;padding:0;">
+    <li style="padding:6px 0;border-bottom:1px solid #e2e8f0;">📋 <strong>/agents</strong> — 智能体列表（卡片网格）</li>
+    <li style="padding:6px 0;border-bottom:1px solid #e2e8f0;">➕ <strong>/agent/create</strong> — 创建智能体（表单向导）</li>
+    <li style="padding:6px 0;border-bottom:1px solid #e2e8f0;">📄 <strong>/agent/:id</strong> — 智能体详情（配置面板）</li>
+    <li style="padding:6px 0;border-bottom:1px solid #e2e8f0;">💬 <strong>/agent/:id/run</strong> — 运行界面（聊天对话 + 图表）</li>
+    <li style="padding:6px 0;">⚙️ <strong>/model-config</strong> — 模型配置（数据表格）</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h3>布局方案选择</h3>
+  <p class="subtitle">你希望采用哪种整体布局模式？</p>
+  <div class="options">
+    <div class="option" data-choice="a" onclick="toggleSelect(this)">
+      <div class="letter">A</div>
+      <div class="content">
+        <h3>左侧导航栏 + 主内容区</h3>
+        <p>固定左侧垂直导航（图标+文字），右侧大面积内容区。类似 Slack、Discord、VS Code 的布局</p>
+      </div>
+    </div>
+    <div class="option" data-choice="b" onclick="toggleSelect(this)">
+      <div class="letter">B</div>
+      <div class="content">
+        <h3>顶部导航 + 全屏内容</h3>
+        <p>顶部水平导航栏，下方全屏内容区域。类似 GitHub、Vercel Dashboard 的布局</p>
+      </div>
+    </div>
+    <div class="option" data-choice="c" onclick="toggleSelect(this)">
+      <div class="letter">C</div>
+      <div class="content">
+        <h3>无边框沉浸式</h3>
+        <p>无传统导航栏，通过首页卡片直接进入各功能模块，每个页面独立设计。类似 Apple 产品页风格</p>
+      </div>
+    </div>
+  </div>
+</div>

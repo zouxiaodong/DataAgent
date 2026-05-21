@@ -1,0 +1,21 @@
+{"type":"click","text":"A\n      \n        深色科技风\n        暗色背景 + 霓虹光效 + 数据可视化仪表盘风格，类似 cyberpunk / 科幻电影控制台","choice":"a","id":null,"timestamp":1779281131279}
+{"type":"click","text":"B\n      \n        极简商务风\n        纯白/浅灰底色 + 细线边框 + 大量留白 + 企业级专业感，类似 Notion / Linear","choice":"b","id":null,"timestamp":1779281133261}
+{"type":"click","text":"D\n      \n        玻璃拟态风\n        半透明毛玻璃效果 + 渐变背景 + 柔和阴影，类似 macOS / iOS 现代设计语言","choice":"d","id":null,"timestamp":1779281143341}
+{"type":"click","text":"A\n      \n        深色科技风\n        暗色背景 + 霓虹光效 + 数据可视化仪表盘风格，类似 cyberpunk / 科幻电影控制台","choice":"a","id":null,"timestamp":1779281150652}
+{"type":"click","text":"D\n      \n        玻璃拟态风\n        半透明毛玻璃效果 + 渐变背景 + 柔和阴影，类似 macOS / iOS 现代设计语言","choice":"d","id":null,"timestamp":1779281161636}
+{"type":"click","text":"C\n      \n        品牌主题风\n        以\"宁西高速\"品牌色为主色调，融入交通/道路元素，体现行业特色","choice":"c","id":null,"timestamp":1779281177734}
+{"type":"click","text":"B\n      \n        极简商务风\n        纯白/浅灰底色 + 细线边框 + 大量留白 + 企业级专业感，类似 Notion / Linear","choice":"b","id":null,"timestamp":1779281179316}
+{"type":"click","text":"A\n      \n        深色科技风\n        暗色背景 + 霓虹光效 + 数据可视化仪表盘风格，类似 cyberpunk / 科幻电影控制台","choice":"a","id":null,"timestamp":1779281180771}
+{"type":"click","text":"D\n      \n        玻璃拟态风\n        半透明毛玻璃效果 + 渐变背景 + 柔和阴影，类似 macOS / iOS 现代设计语言","choice":"d","id":null,"timestamp":1779281181726}
+{"type":"click","text":"C\n      \n        无边框沉浸式\n        无传统导航栏，通过首页卡片直接进入各功能模块，每个页面独立设计。类似 Apple 产品页风格","choice":"c","id":null,"timestamp":1779281547580}
+{"type":"click","text":"C\n      \n        无边框沉浸式\n        无传统导航栏，通过首页卡片直接进入各功能模块，每个页面独立设计。类似 Apple 产品页风格","choice":"c","id":null,"timestamp":1779281554205}
+{"type":"click","text":"C\n      \n        无边框沉浸式\n        无传统导航栏，通过首页卡片直接进入各功能模块，每个页面独立设计。类似 Apple 产品页风格","choice":"c","id":null,"timestamp":1779281555900}
+{"type":"click","text":"C\n      \n        无边框沉浸式\n        无传统导航栏，通过首页卡片直接进入各功能模块，每个页面独立设计。类似 Apple 产品页风格","choice":"c","id":null,"timestamp":1779281556181}
+{"type":"click","text":"D\n    \n      深色模式 — 暗色玻璃\n      深色背景 + 半透明深色玻璃卡片 + 发光强调色。高端科技感，适合数据密集型应用","choice":"d","id":null,"timestamp":1779281695809}
+{"type":"click","text":"D\n    \n      深色模式 — 暗色玻璃\n      深色背景 + 半透明深色玻璃卡片 + 发光强调色。高端科技感，适合数据密集型应用","choice":"d","id":null,"timestamp":1779281699705}
+{"type":"click","text":"A\n    \n      仪表盘式首页\n      顶部统计卡片（智能体数量、运行次数等）+ 常用智能体快捷入口 + 最近运行记录","choice":"a","id":null,"timestamp":1779281882493}
+{"type":"click","text":"B\n    \n      智能体展示首页\n      大尺寸智能体卡片网格，每个卡片展示图标、名称、描述、状态。类似应用商店的布局","choice":"b","id":null,"timestamp":1779281890189}
+{"type":"click","text":"A\n    \n      仪表盘式首页\n      顶部统计卡片（智能体数量、运行次数等）+ 常用智能体快捷入口 + 最近运行记录","choice":"a","id":null,"timestamp":1779281894469}
+{"type":"click","text":"B\n    \n      智能体展示首页\n      大尺寸智能体卡片网格，每个卡片展示图标、名称、描述、状态。类似应用商店的布局","choice":"b","id":null,"timestamp":1779281895956}
+{"type":"click","text":"A\n    \n      全屏聊天\n      整个页面就是聊天窗口，顶部标题栏，中间对话区，底部输入框。类似 ChatGPT 的沉浸式体验","choice":"a","id":null,"timestamp":1779282017002}
+{"type":"click","text":"B\n    \n      左侧历史 + 右侧对话\n      左侧显示会话历史列表，右侧是当前对话区。方便在多个会话间切换","choice":"b","id":null,"timestamp":1779282018626}
