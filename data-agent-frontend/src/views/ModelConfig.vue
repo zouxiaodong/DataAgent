@@ -668,19 +668,21 @@
 </script>
 
 <style scoped>
+  /* Page wrapper */
   .model-config-page {
+    background: var(--gradient-bg);
     min-height: 100vh;
-    background: var(--bg-layout);
     font-family: var(--font-family);
   }
 
+  /* Content area */
   .main-content {
-    width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
   }
 
+  /* Header */
   .content-header {
     display: flex;
     justify-content: space-between;
@@ -691,7 +693,7 @@
   .header-info h1 {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--text-primary);
     margin: 0 0 0.5rem 0;
     letter-spacing: -0.02em;
   }
@@ -702,6 +704,7 @@
     font-size: 1.1rem;
   }
 
+  /* Action section */
   .action-section {
     margin-bottom: 2rem;
   }
@@ -723,8 +726,14 @@
     gap: 1rem;
   }
 
+  /* Config table wrapper - glassmorphism */
   .config-table {
     margin-bottom: 2rem;
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
   }
 
   .action-buttons-cell {
@@ -751,6 +760,31 @@
     font-style: italic;
   }
 
+  /* Element Plus table overrides */
+  :deep(.el-table) {
+    background: transparent !important;
+    --el-table-border-color: var(--border-glass) !important;
+  }
+
+  :deep(.el-table th) {
+    background: rgba(15, 23, 42, 0.5) !important;
+    color: var(--text-primary) !important;
+  }
+
+  :deep(.el-table td) {
+    color: var(--text-secondary) !important;
+    border-color: var(--border-glass) !important;
+  }
+
+  :deep(.el-table--enable-row-hover .el-table__body tr:hover > td) {
+    background: var(--bg-glass-hover) !important;
+  }
+
+  :deep(.el-table__empty-text) {
+    color: var(--text-tertiary) !important;
+  }
+
+  /* Responsive */
   @media (max-width: 768px) {
     .main-content {
       padding: 1rem;

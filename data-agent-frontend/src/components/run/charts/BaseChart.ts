@@ -26,14 +26,12 @@ export interface ChartData {
 
 export type ChartTypes = 'table' | 'bar' | 'column' | 'line' | 'pie';
 
-// 基础颜色面板，作为扩展颜色数组的前6个色值
-export const COLOR_PANEL = ['#5584FF', '#36CBCB', '#4ECB74', '#FAD337', '#F2637B', '#975FEE'];
+// Dark theme colors — lightened for WCAG AA on dark backgrounds
+export const COLOR_PANEL = ['#60a5fa', '#fbbf24', '#34d399', '#f87171', '#a78bfa', '#fb923c'];
 
-// 扩展颜色数组，包含基础颜色面板、ECharts默认颜色和额外颜色
+// Extended colors for dark theme
 export const EXTENDED_COLORS = [
-  // 基础颜色面板作为前6个色值
   ...COLOR_PANEL,
-  // ECharts默认颜色（不包括与COLOR_PANEL重复的部分）
   '#5470c6',
   '#91cc75',
   '#fac858',
@@ -43,7 +41,6 @@ export const EXTENDED_COLORS = [
   '#fc8452',
   '#9a60b4',
   '#ea7ccc',
-  // 额外补充颜色
   '#0082fc',
   '#fdd845',
   '#22ed7c',

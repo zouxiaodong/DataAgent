@@ -16,143 +16,96 @@
 <template>
   <BaseLayout>
     <div class="agent-list-page">
-      <!-- 主内容区域 -->
       <main class="main-content">
-        <!-- 内容头部 -->
-        <div class="content-header">
-          <div class="header-info">
-            <h1 class="content-title">智能体管理中心</h1>
-            <p class="content-subtitle">创建和管理您的AI智能体，让数据分析更智能</p>
+        <!-- Page Header -->
+        <div class="page-header">
+          <div class="header-left">
+            <h1 class="page-title">智能体管理中心</h1>
+            <p class="page-subtitle">创建和管理您的AI智能体，让数据分析更智能</p>
           </div>
-          <div class="header-stats">
-            <div class="stat-item">
-              <div class="stat-number">{{ agents.length }}</div>
-              <div class="stat-label">总数量</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">{{ publishedCount }}</div>
-              <div class="stat-label">已发布</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">{{ draftCount }}</div>
-              <div class="stat-label">草稿</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">{{ offlineCount }}</div>
-              <div class="stat-label">已下线</div>
-            </div>
+          <el-button type="primary" :icon="Plus" @click="goToCreateAgent" size="large" class="create-btn">
+            创建智能体
+          </el-button>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-row">
+          <div class="stat-card" @click="setFilter('all')" :class="{ active: activeFilter === 'all' }">
+            <div class="stat-value">{{ agents.length }}</div>
+            <div class="stat-label">全部智能体</div>
+          </div>
+          <div class="stat-card" @click="setFilter('published')" :class="{ active: activeFilter === 'published' }">
+            <div class="stat-value published">{{ publishedCount }}</div>
+            <div class="stat-label">已发布</div>
+          </div>
+          <div class="stat-card" @click="setFilter('draft')" :class="{ active: activeFilter === 'draft' }">
+            <div class="stat-value draft">{{ draftCount }}</div>
+            <div class="stat-label">草稿</div>
+          </div>
+          <div class="stat-card" @click="setFilter('offline')" :class="{ active: activeFilter === 'offline' }">
+            <div class="stat-value offline">{{ offlineCount }}</div>
+            <div class="stat-label">已下线</div>
           </div>
         </div>
 
-        <!-- 过滤和搜索区域 -->
-        <div class="filter-section">
-          <el-card>
-            <div class="filter-content">
-              <div class="filter-tabs-row">
-                <div class="filter-tabs">
-                  <el-radio-group v-model="activeFilter" size="large">
-                    <el-radio-button value="all">
-                      <el-icon><Grid /></el-icon>
-                      <span>全部智能体</span>
-                      <span class="tab-count">{{ agents.length }}</span>
-                    </el-radio-button>
-                    <el-radio-button value="published">
-                      <el-icon><Check /></el-icon>
-                      <span>已发布</span>
-                      <span class="tab-count">{{ publishedCount }}</span>
-                    </el-radio-button>
-                    <el-radio-button value="draft">
-                      <el-icon><Edit /></el-icon>
-                      <span>草稿</span>
-                      <span class="tab-count">{{ draftCount }}</span>
-                    </el-radio-button>
-                    <el-radio-button value="offline">
-                      <el-icon><VideoPause /></el-icon>
-                      <span>已下线</span>
-                      <span class="tab-count">{{ offlineCount }}</span>
-                    </el-radio-button>
-                  </el-radio-group>
-                </div>
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <el-input
+            v-model="searchKeyword"
+            placeholder="搜索智能体名称、ID或描述..."
+            size="large"
+            :prefix-icon="Search"
+            clearable
+            class="search-input"
+          />
+          <el-button :icon="Refresh" @click="loadAgents" size="large" circle class="refresh-btn" />
+        </div>
 
-                <div class="search-and-actions">
-                  <el-input
-                    v-model="searchKeyword"
-                    placeholder="搜索智能体名称、ID或描述..."
-                    size="large"
-                    :prefix-icon="Search"
-                    clearable
-                    style="width: 350px"
-                  />
-                  <div class="action-buttons">
-                    <el-button :icon="Refresh" @click="loadAgents" size="large">刷新</el-button>
-                    <el-button type="primary" :icon="Plus" @click="goToCreateAgent" size="large">
-                      创建智能体
-                    </el-button>
-                  </div>
+        <!-- Agents Grid -->
+        <div class="agents-grid" v-if="!loading">
+          <div
+            v-for="agent in filteredAgents"
+            :key="agent.id"
+            class="agent-card"
+            @click="enterAgent(agent.id)"
+          >
+            <div class="card-inner">
+              <!-- Delete Button -->
+              <div class="delete-btn" @click.stop="handleDeleteAgent(agent)">
+                <el-icon><Delete /></el-icon>
+              </div>
+
+              <!-- Status Tag -->
+              <el-tag :type="getStatusTagType(agent.status)" size="small" class="status-tag">
+                {{ getStatusText(agent.status) }}
+              </el-tag>
+
+              <!-- Avatar -->
+              <div class="agent-avatar">
+                <el-avatar :size="56" :src="agent.avatar">
+                  {{ agent.name.charAt(0) }}
+                </el-avatar>
+              </div>
+
+              <!-- Info -->
+              <div class="agent-info">
+                <h3 class="agent-name">{{ agent.name }}</h3>
+                <p class="agent-description">{{ agent.description }}</p>
+                <div class="agent-meta">
+                  <span class="agent-id">ID: {{ agent.id }}</span>
+                  <span class="agent-time">{{ formatTime(agent.updateTime) }}</span>
                 </div>
               </div>
             </div>
-          </el-card>
+          </div>
         </div>
 
-        <!-- 智能体网格 -->
-        <!-- todo: 支持分页（需后端支持）-->
-        <div class="agents-grid" v-if="!loading">
-          <el-row :gutter="20">
-            <el-col
-              v-for="agent in filteredAgents"
-              :key="agent.id"
-              :xs="24"
-              :sm="12"
-              :md="8"
-              :lg="6"
-            >
-              <el-card
-                class="agent-card"
-                :body-style="{ padding: '20px' }"
-                @click="enterAgent(agent.id)"
-              >
-                <div class="agent-content">
-                  <!-- 删除按钮 -->
-                  <div class="delete-button" @click.stop="handleDeleteAgent(agent)">
-                    <el-icon><Delete /></el-icon>
-                  </div>
-
-                  <!-- 头像区域 -->
-                  <div class="agent-avatar">
-                    <el-avatar :size="48" :src="agent.avatar">
-                      {{ agent.name }}
-                    </el-avatar>
-                  </div>
-
-                  <!-- 信息区域 -->
-                  <div class="agent-info">
-                    <h3 class="agent-name">{{ agent.name }}</h3>
-                    <p class="agent-description">{{ agent.description }}</p>
-                    <div class="agent-meta">
-                      <span class="agent-id">ID: {{ agent.id }}</span>
-                      <span class="agent-time">{{ formatTime(agent.updateTime) }}</span>
-                    </div>
-                  </div>
-
-                  <!-- 状态标签 -->
-                  <div class="agent-status">
-                    <el-tag :type="getStatusTagType(agent.status)" size="small" effect="light">
-                      {{ getStatusText(agent.status) }}
-                    </el-tag>
-                  </div>
-                </div>
-              </el-card>
-            </el-col>
-          </el-row>
-        </div>
-
-        <!-- 加载状态 -->
+        <!-- Loading State -->
         <div v-if="loading" class="loading-state">
-          <el-skeleton :rows="6" animated />
+          <el-skeleton :rows="3" animated />
         </div>
 
-        <!-- 空状态 -->
+        <!-- Empty State -->
         <div v-if="!loading && filteredAgents.length === 0" class="empty-state">
           <el-empty description="暂无智能体">
             <template #image>
@@ -172,9 +125,6 @@
   import { ElMessage, ElMessageBox } from 'element-plus';
   import {
     Grid,
-    Check,
-    Edit,
-    VideoPause,
     Delete,
     Search,
     Refresh,
@@ -189,9 +139,6 @@
     components: {
       BaseLayout,
       Grid,
-      Check,
-      Edit,
-      VideoPause,
       Delete,
     },
     setup() {
@@ -201,7 +148,6 @@
       const searchKeyword = ref('');
       const agents = ref<Agent[]>([]);
 
-      // 计算属性
       const publishedCount = computed(
         () => agents.value.filter((a: Agent) => a.status === 'published').length,
       );
@@ -214,13 +160,9 @@
 
       const filteredAgents = computed(() => {
         let filtered = agents.value;
-
-        // 按状态过滤
         if (activeFilter.value !== 'all') {
           filtered = filtered.filter((agent: Agent) => agent.status === activeFilter.value);
         }
-
-        // 按关键词搜索
         if (searchKeyword.value.trim()) {
           const keyword = searchKeyword.value.toLowerCase();
           filtered = filtered.filter(
@@ -230,7 +172,6 @@
               agent.id.toString().includes(keyword),
           );
         }
-
         return filtered;
       });
 
@@ -282,7 +223,6 @@
         router.push('/agent/create');
       };
 
-      // 删除智能体
       const handleDeleteAgent = async (agent: Agent) => {
         try {
           await ElMessageBox.confirm(
@@ -294,22 +234,18 @@
               type: 'warning',
             },
           );
-
           const success = await agentService.delete(agent.id!);
           if (success) {
             ElMessage.success('智能体删除成功');
-            // 从列表中移除已删除的智能体
             agents.value = agents.value.filter((a: Agent) => a.id !== agent.id);
           } else {
             ElMessage.error('智能体删除失败');
           }
         } catch (error) {
-          // 用户取消了删除操作
           console.log('删除操作已取消');
         }
       };
 
-      // 生命周期
       onMounted(() => {
         loadAgents();
       });
@@ -342,180 +278,184 @@
 <style scoped>
   .agent-list-page {
     min-height: 100vh;
-    background: var(--bg-layout);
+    background: var(--gradient-bg);
     font-family: var(--font-family);
   }
 
   .main-content {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
   }
 
-  .content-header {
+  /* Page Header */
+  .page-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 2rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
   }
 
-  .content-title {
-    font-size: 2rem;
+  .page-title {
+    font-size: 1.75rem;
     font-weight: 700;
-    color: var(--primary-color);
-    margin: 0 0 0.5rem 0;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem 0;
     letter-spacing: -0.02em;
   }
 
-  .content-subtitle {
+  .page-subtitle {
     color: var(--text-secondary);
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
-  .header-stats {
-    display: flex;
-    gap: 2rem;
+  .create-btn {
+    background: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+    border-radius: var(--radius-pill) !important;
+    padding: 0 1.5rem !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 16px rgba(96, 165, 250, 0.3) !important;
+    transition: all 0.3s ease !important;
   }
 
-  .stat-item {
+  .create-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 24px rgba(96, 165, 250, 0.4) !important;
+  }
+
+  /* Stats Row */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-card {
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
     text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
 
-  .stat-number {
+  .stat-card:hover {
+    background: var(--bg-glass-hover);
+    border-color: var(--border-glass-hover);
+    transform: translateY(-2px);
+  }
+
+  .stat-card.active {
+    border-color: var(--accent-color);
+    background: var(--accent-light);
+  }
+
+  .stat-value {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--accent-color);
+    color: var(--text-primary);
     line-height: 1;
+    margin-bottom: 0.5rem;
   }
+
+  .stat-value.published { color: var(--success-color); }
+  .stat-value.draft { color: #fbbf24; }
+  .stat-value.offline { color: var(--text-tertiary); }
 
   .stat-label {
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
-    margin-top: 0.25rem;
+    font-weight: 500;
   }
 
-  .filter-section {
+  /* Filter Bar */
+  .filter-bar {
+    display: flex;
+    gap: 0.75rem;
     margin-bottom: 2rem;
-  }
-
-  .filter-content {
-    padding: 20px;
-  }
-
-  .filter-tabs-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .filter-tabs {
-    display: flex;
-  }
-
-  .search-and-actions {
-    display: flex;
-    gap: 1rem;
     align-items: center;
   }
 
-  .action-buttons {
-    display: flex;
-    gap: 0.5rem;
+  .search-input {
+    flex: 1;
   }
 
-  .tab-count {
-    background: rgba(255, 255, 255, 0.2);
-    color: inherit;
-    padding: 0.15rem 0.5rem;
-    border-radius: var(--radius-pill);
-    font-size: 0.75rem;
-    font-weight: 600;
-    margin-left: 0.5rem;
+  .search-input :deep(.el-input__wrapper) {
+    background: var(--bg-glass) !important;
+    border: 1px solid var(--border-glass) !important;
+    backdrop-filter: var(--backdrop-blur) !important;
+    box-shadow: none !important;
+    border-radius: var(--radius-lg) !important;
   }
 
+  .search-input :deep(.el-input__inner) {
+    color: var(--text-primary) !important;
+  }
+
+  .refresh-btn {
+    background: var(--bg-glass) !important;
+    border: 1px solid var(--border-glass) !important;
+    backdrop-filter: var(--backdrop-blur) !important;
+    color: var(--text-secondary) !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .refresh-btn:hover {
+    background: var(--bg-glass-hover) !important;
+    border-color: var(--border-glass-hover) !important;
+    color: var(--text-primary) !important;
+  }
+
+  /* Agents Grid */
+  .agents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* Agent Card */
   .agent-card {
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: var(--radius-xl);
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: var(--radius-xl) !important;
-    border: 1px solid var(--border-primary) !important;
-    background: var(--bg-primary) !important;
-    box-shadow: var(--shadow-xs) !important;
     overflow: hidden;
+    position: relative;
   }
 
   .agent-card:hover {
-    box-shadow: var(--shadow-lg) !important;
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 32px rgba(96, 165, 250, 0.15), 0 0 0 1px rgba(96, 165, 250, 0.2);
     transform: translateY(-4px);
-    border-color: var(--accent-color) !important;
   }
 
-  .agent-content {
-    position: relative;
-    padding: 4px;
-  }
-
-  .agent-avatar {
+  .card-inner {
     display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-  }
-
-  .agent-avatar :deep(.el-avatar) {
-    background: linear-gradient(135deg, var(--accent-color), var(--highlight-color)) !important;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
-    font-weight: 700;
-  }
-
-  .agent-info {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  .agent-name {
-    font-size: 1.0625rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin: 0 0 0.5rem 0;
-    letter-spacing: -0.01em;
-  }
-
-  .agent-description {
-    color: var(--text-secondary);
-    font-size: 0.875rem;
-    line-height: 1.6;
-    margin: 0 0 0.75rem 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .agent-meta {
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    font-size: 0.75rem;
-    color: var(--text-tertiary);
+    padding: 1.5rem;
+    position: relative;
   }
 
-  .agent-status {
+  /* Delete Button */
+  .delete-btn {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-  }
-
-  .delete-button {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 0.75rem;
+    left: 0.75rem;
     width: 28px;
     height: 28px;
     border-radius: var(--radius-base);
-    background: rgba(239, 68, 68, 0.85);
+    background: rgba(248, 113, 113, 0.85);
     color: white;
     display: flex;
     align-items: center;
@@ -524,23 +464,92 @@
     opacity: 0;
     transition: all 0.2s ease;
     z-index: 10;
+    font-size: 14px;
   }
 
-  .delete-button:hover {
-    background: rgba(220, 38, 38, 0.95);
+  .delete-btn:hover {
+    background: rgba(239, 68, 68, 0.95);
     transform: scale(1.1);
   }
 
-  .agent-card:hover .delete-button {
+  .agent-card:hover .delete-btn {
     opacity: 1;
   }
 
+  /* Status Tag */
+  .status-tag {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 10;
+  }
+
+  /* Avatar */
+  .agent-avatar {
+    margin-bottom: 1rem;
+  }
+
+  .agent-avatar :deep(.el-avatar) {
+    background: linear-gradient(135deg, var(--accent-color), #a78bfa) !important;
+    box-shadow: 0 4px 16px rgba(96, 165, 250, 0.3);
+    font-weight: 700;
+    font-size: 1.25rem !important;
+  }
+
+  /* Info */
+  .agent-info {
+    text-align: center;
+    width: 100%;
+  }
+
+  .agent-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .agent-description {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0 0 0.75rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.55rem;
+  }
+
+  .agent-meta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
+    width: 100%;
+  }
+
+  /* Loading / Empty */
   .loading-state {
-    padding: 4rem 2rem;
+    padding: 3rem 1rem;
   }
 
   .empty-state {
-    padding: 4rem 2rem;
+    padding: 4rem 1rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .agents-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @media (max-width: 768px) {
@@ -548,41 +557,30 @@
       padding: 1rem;
     }
 
-    .content-header {
+    .page-header {
       flex-direction: column;
       align-items: flex-start;
       gap: 1rem;
     }
 
-    .header-stats {
-      gap: 1rem;
-    }
-
-    .filter-tabs-row {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 1rem;
-    }
-
-    .filter-tabs {
-      justify-content: center;
-    }
-
-    .search-and-actions {
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .search-and-actions .el-input {
-      width: 100% !important;
-    }
-
-    .action-buttons {
+    .create-btn {
       width: 100%;
     }
 
-    .action-buttons .el-button {
-      flex: 1;
+    .stats-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .agents-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .filter-bar {
+      flex-direction: column;
+    }
+
+    .refresh-btn {
+      align-self: flex-end;
     }
   }
 </style>

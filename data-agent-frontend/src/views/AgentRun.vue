@@ -16,7 +16,7 @@
 
 <template>
   <BaseLayout>
-    <el-container style="height: calc(100vh - 60px); gap: 0">
+    <el-container style="height: 100vh; gap: 0">
       <!-- 左侧历史消息栏 -->
       <ChatSessionSidebar
         :agent="agent"
@@ -36,7 +36,7 @@
       />
 
       <!-- 右侧对话栏 -->
-      <el-main style="background-color: white; display: flex; flex-direction: column">
+      <el-main style="background: var(--bg-layout); display: flex; flex-direction: column">
         <!-- 消息显示区域 -->
         <div class="chat-container" ref="chatContainer">
           <div v-if="!currentSession" class="empty-state">
@@ -370,7 +370,7 @@
   import hljs from 'highlight.js';
   import { marked } from 'marked';
   import DOMPurify from 'dompurify';
-  import 'highlight.js/styles/github.css';
+  import 'highlight.js/styles/github-dark.css';
   // 导入并注册语言
   import sql from 'highlight.js/lib/languages/sql';
   import python from 'highlight.js/lib/languages/python';
@@ -1389,7 +1389,7 @@
     flex: 1;
     overflow-y: auto;
     padding: 1.5rem;
-    background: var(--bg-secondary);
+    background: transparent;
     scroll-behavior: smooth;
   }
 
@@ -1476,10 +1476,12 @@
   }
 
   .message.assistant .message-text {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-primary);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
     border-radius: 20px 20px 20px 4px;
-    box-shadow: var(--shadow-xs);
+    box-shadow: var(--shadow-glass);
     color: var(--text-primary);
   }
 
@@ -1541,26 +1543,28 @@
   }
 
   .agent-response-block {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-primary);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-xs);
+    box-shadow: var(--shadow-glass);
     transition: all 0.3s ease;
   }
 
   .agent-response-block:hover {
     border-color: var(--accent-color);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--glow-md);
   }
 
   .agent-response-title {
-    background: var(--bg-secondary);
+    background: rgba(15, 23, 42, 0.5);
     padding: 10px 16px;
     font-weight: 600;
     font-size: 13px;
     color: var(--text-secondary);
-    border-bottom: 1px solid var(--border-secondary);
+    border-bottom: 1px solid var(--border-glass);
     display: flex;
     align-items: center;
     gap: 6px;
@@ -1592,8 +1596,8 @@
   }
 
   .agent-response-content pre.hljs {
-    background: var(--bg-tertiary) !important;
-    border: 1px solid var(--border-primary);
+    background: rgba(15, 23, 42, 0.5) !important;
+    border: 1px solid var(--border-glass);
     border-radius: 6px;
     padding: 16px;
     margin: 8px 0;
@@ -1611,24 +1615,26 @@
     display: block;
     overflow-x: auto;
     color: var(--text-primary);
-    background: var(--bg-tertiary);
+    background: rgba(15, 23, 42, 0.5);
     padding: 16px;
     border-radius: 6px;
-    border: 1px solid var(--border-primary);
+    border: 1px solid var(--border-glass);
   }
 
   .markdown-report-message {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-primary);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-xs);
+    box-shadow: var(--shadow-glass);
   }
 
   .markdown-report-header {
     padding: 12px 16px;
-    background: var(--bg-secondary);
-    border-bottom: 1px solid var(--border-secondary);
+    background: rgba(15, 23, 42, 0.5);
+    border-bottom: 1px solid var(--border-glass);
   }
 
   .report-info {
@@ -1652,8 +1658,8 @@
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1665,6 +1671,7 @@
     max-width: 1200px;
     height: 90vh;
     background: var(--bg-primary);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-2xl);
     display: flex;
     flex-direction: column;
@@ -1677,15 +1684,15 @@
     justify-content: space-between;
     align-items: center;
     padding: 16px 24px;
-    border-bottom: 1px solid var(--border-secondary);
-    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-glass);
+    background: rgba(15, 23, 42, 0.5);
     flex-shrink: 0;
   }
 
   .report-fullscreen-title {
     font-size: 18px;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--text-primary);
   }
 
   .report-fullscreen-close {
@@ -1704,10 +1711,10 @@
 
   .input-area {
     padding: 1rem 1.5rem 1.5rem;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid var(--border-secondary);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border-top: 1px solid var(--border-glass);
   }
 
   .input-controls {
@@ -1777,17 +1784,19 @@
 
   .input-container :deep(.el-textarea__inner) {
     border-radius: var(--radius-xl) !important;
-    border: 1px solid var(--border-primary) !important;
+    border: 1px solid var(--border-glass) !important;
+    background: var(--bg-glass) !important;
+    color: var(--text-primary) !important;
     padding: 14px 20px !important;
     font-size: 15px !important;
     resize: none;
-    box-shadow: var(--shadow-xs) !important;
+    box-shadow: none !important;
     transition: all 0.2s ease !important;
   }
 
   .input-container :deep(.el-textarea__inner:focus) {
     border-color: var(--accent-color) !important;
-    box-shadow: var(--shadow-glow) !important;
+    box-shadow: var(--glow-sm) !important;
   }
 
   .send-button {
@@ -1804,7 +1813,7 @@
   .send-button:hover:not(:disabled) {
     background: var(--accent-hover) !important;
     transform: scale(1.05) !important;
-    box-shadow: var(--shadow-lg) !important;
+    box-shadow: var(--glow-md) !important;
   }
 
   .send-button:active:not(:disabled) {
@@ -1823,11 +1832,13 @@
   }
 
   .result-set-message {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-primary);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-lg);
     padding: 16px;
-    box-shadow: var(--shadow-xs);
+    box-shadow: var(--shadow-glass);
   }
 
   @media (max-width: 768px) {

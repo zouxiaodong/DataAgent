@@ -190,7 +190,7 @@
   .markdown-content {
     font-size: 0.85em;
     line-height: 1.4 !important;
-    color: var(--primary-color);
+    color: var(--text-primary);
     word-wrap: break-word;
     white-space: normal;
     font-family: inherit;
@@ -210,13 +210,13 @@
 
   .markdown-content :deep(h1) {
     font-size: 2em;
-    border-bottom: 1px solid var(--border-primary);
+    border-bottom: 1px solid var(--border-glass);
     padding-bottom: 0.3em;
   }
 
   .markdown-content :deep(h2) {
     font-size: 1.5em;
-    border-bottom: 1px solid var(--border-primary);
+    border-bottom: 1px solid var(--border-glass);
     padding-bottom: 0.3em;
   }
 
@@ -264,19 +264,19 @@
 
   .markdown-content :deep(.code-block-wrapper) {
     margin: 10px 0;
-    border: 1px solid var(--border-primary);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-md);
     overflow: hidden;
-    background: var(--bg-secondary);
+    background: rgba(15, 23, 42, 0.6);
   }
 
   .markdown-content :deep(.code-block-header) {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--bg-secondary);
+    background: rgba(15, 23, 42, 0.6);
     padding: 6px 10px;
-    border-bottom: 1px solid var(--border-primary);
+    border-bottom: 1px solid var(--border-glass);
     font-size: 11px;
   }
 
@@ -290,18 +290,18 @@
 
   .markdown-content :deep(.code-copy-button) {
     background: transparent;
-    border: 1px solid var(--border-primary);
+    border: 1px solid var(--border-glass);
     padding: 3px 10px;
     border-radius: var(--radius-sm);
     font-size: 10px;
     cursor: pointer;
     transition: all 0.2s;
-    color: var(--primary-color);
+    color: var(--text-primary);
   }
 
   .markdown-content :deep(.code-copy-button:hover) {
-    background: var(--bg-tertiary);
-    border-color: var(--border-secondary);
+    background: var(--bg-glass-hover);
+    border-color: var(--border-glass-hover);
   }
 
   .markdown-content :deep(.code-copy-button.copied) {
@@ -314,7 +314,7 @@
     margin: 0;
     padding: 10px;
     overflow: auto;
-    background: var(--bg-secondary);
+    background: rgba(15, 23, 42, 0.6);
     font-size: 11px;
     line-height: 1.35;
   }
@@ -330,8 +330,8 @@
 
   .markdown-content :deep(.inline-code),
   .markdown-content :deep(code:not(pre code)) {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-primary);
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-glass);
     border-radius: 4px;
     padding: 2px 6px;
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
@@ -342,7 +342,7 @@
   .markdown-content :deep(blockquote) {
     padding: 0 0.75em;
     color: var(--text-secondary);
-    border-left: 0.25em solid var(--border-secondary);
+    border-left: 0.25em solid var(--border-glass);
     margin: 0 0 10px 0;
   }
 
@@ -373,23 +373,23 @@
 
   .markdown-content :deep(tr) {
     display: table-row;
-    border-top: 1px solid var(--border-primary);
+    border-top: 1px solid var(--border-glass);
   }
 
   .markdown-content :deep(tr:nth-child(2n)) {
-    background-color: var(--bg-secondary);
+    background-color: rgba(15, 23, 42, 0.4);
   }
 
   .markdown-content :deep(th),
   .markdown-content :deep(td) {
     display: table-cell;
     padding: 4px 10px;
-    border: 1px solid var(--border-primary);
+    border: 1px solid var(--border-glass);
   }
 
   .markdown-content :deep(th) {
     font-weight: 600;
-    background-color: var(--bg-secondary);
+    background-color: rgba(15, 23, 42, 0.6);
   }
 
   .markdown-content :deep(a) {
@@ -407,7 +407,7 @@
     margin: 16px 0;
     background-color: transparent;
     border: 0;
-    border-top: 1px dashed var(--border-primary);
+    border-top: 1px dashed var(--border-glass);
   }
 
   .markdown-content :deep(img) {

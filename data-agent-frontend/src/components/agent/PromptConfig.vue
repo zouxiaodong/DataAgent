@@ -590,8 +590,11 @@
 <style scoped>
   .prompt-optimization-config {
     padding: 20px;
-    background: var(--bg-primary);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
     border-radius: var(--radius-lg);
+    border: 1px solid var(--border-glass);
     box-shadow: var(--shadow-sm);
   }
 
@@ -612,7 +615,7 @@
   }
 
   .message-toast.success {
-    background: #22c55e;
+    background: var(--success-color);
   }
 
   .message-toast.error {
@@ -659,7 +662,10 @@
   .agent-prompt-section {
     margin-bottom: 24px;
     padding: 16px;
-    background: var(--bg-secondary);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-md);
   }
 
@@ -677,7 +683,7 @@
   }
 
   .optimization-configs {
-    border-top: 1px solid var(--border-primary);
+    border-top: 1px solid var(--border-glass);
     padding-top: 24px;
   }
 
@@ -719,7 +725,7 @@
   }
 
   .batch-action-btn {
-    background: #22c55e;
+    background: var(--success-color);
   }
 
   .batch-action-btn:hover {
@@ -737,16 +743,19 @@
   }
 
   .config-item {
-    border: 1px solid var(--border-primary);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-md);
     padding: 16px;
     margin-bottom: 12px;
     transition: all 0.2s;
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
   }
 
   .config-item.disabled {
     opacity: 0.6;
-    background: var(--bg-secondary);
+    background: var(--bg-glass-hover);
   }
 
   .config-item.selected {
@@ -779,7 +788,7 @@
   .config-priority {
     font-size: 12px;
     color: var(--text-secondary);
-    background: var(--bg-secondary);
+    background: var(--bg-glass-hover);
     padding: 2px 6px;
     border-radius: 4px;
   }
@@ -794,18 +803,21 @@
   .priority-btn,
   .delete-btn {
     padding: 4px 8px;
-    border: 1px solid var(--border-primary);
-    background: var(--bg-primary);
+    border: 1px solid var(--border-glass);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
     border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 12px;
     transition: all 0.2s;
+    color: var(--text-primary);
   }
 
   .toggle-btn.active {
-    background: #22c55e;
+    background: var(--success-color);
     color: white;
-    border-color: #22c55e;
+    border-color: var(--success-color);
   }
 
   .edit-btn:hover {
@@ -824,7 +836,7 @@
   }
 
   .config-content {
-    border-top: 1px solid var(--border-primary);
+    border-top: 1px solid var(--border-glass);
     padding-top: 12px;
   }
 
@@ -835,7 +847,9 @@
   }
 
   .optimization-prompt {
-    background: var(--bg-secondary);
+    background: var(--bg-glass-hover);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
     padding: 12px;
     border-radius: var(--radius-sm);
     color: var(--text-primary);
@@ -860,7 +874,10 @@
   }
 
   .dialog-content {
-    background: var(--bg-primary);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-lg);
     width: 90%;
     max-width: 600px;
@@ -873,7 +890,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 20px 0 20px;
-    border-bottom: 1px solid var(--border-primary);
+    border-bottom: 1px solid var(--border-glass);
   }
 
   .dialog-header h3 {
@@ -919,10 +936,12 @@
   .form-group textarea {
     width: 100%;
     padding: 8px 12px;
-    border: 1px solid var(--border-primary);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-sm);
     font-size: 14px;
-    background: var(--bg-primary);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
     color: var(--text-primary);
     transition: border-color 0.2s;
   }
@@ -941,13 +960,13 @@
     gap: 12px;
     margin-top: 24px;
     padding-top: 16px;
-    border-top: 1px solid var(--border-primary);
+    border-top: 1px solid var(--border-glass);
   }
 
   .cancel-btn,
   .save-btn {
     padding: 8px 16px;
-    border: 1px solid var(--border-primary);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 14px;
@@ -955,12 +974,14 @@
   }
 
   .cancel-btn {
-    background: var(--bg-primary);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
     color: var(--text-secondary);
   }
 
   .cancel-btn:hover {
-    border-color: var(--text-tertiary);
+    border-color: var(--border-glass-hover);
   }
 
   .save-btn {
@@ -974,8 +995,10 @@
   }
 
   .batch-actions-panel {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-primary);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-md);
     padding: 12px;
     margin-bottom: 16px;
@@ -1010,21 +1033,24 @@
 
   .batch-btn {
     padding: 6px 12px;
-    border: 1px solid var(--border-primary);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 12px;
-    background: var(--bg-primary);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
     transition: all 0.2s;
+    color: var(--text-primary);
   }
 
   .batch-btn.enable {
-    color: #22c55e;
-    border-color: #22c55e;
+    color: var(--success-color);
+    border-color: var(--success-color);
   }
 
   .batch-btn.enable:hover {
-    background: #22c55e;
+    background: var(--success-color);
     color: white;
   }
 
@@ -1040,11 +1066,11 @@
 
   .batch-btn.cancel {
     color: var(--text-secondary);
-    border-color: var(--border-primary);
+    border-color: var(--border-glass);
   }
 
   .batch-btn.cancel:hover {
-    background: var(--bg-secondary);
+    background: var(--bg-glass-hover);
   }
 
   .batch-btn:disabled {

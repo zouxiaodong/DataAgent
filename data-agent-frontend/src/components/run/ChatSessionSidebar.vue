@@ -417,8 +417,10 @@
 
 <style scoped>
   .chat-session-sidebar {
-    background-color: white;
-    border-right: 1px solid #e8e8e8;
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border-right: 1px solid var(--border-glass);
     transition: width 0.3s ease;
     overflow: hidden;
   }
@@ -470,24 +472,26 @@
 
   .session-item {
     padding: 16px;
-    border: 1px solid var(--border-primary);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-lg);
     margin-bottom: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: var(--bg-primary);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
   }
 
   .session-item:hover {
-    border-color: var(--accent-color);
-    background-color: var(--accent-light);
+    border-color: var(--border-glass-hover);
+    background: var(--bg-glass-hover);
     transform: translateY(-1px);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-glass);
   }
 
   .session-item.active {
     border-color: var(--accent-color);
-    background-color: var(--accent-light);
+    background: var(--accent-light);
   }
 
   .session-item.pinned {
@@ -504,7 +508,7 @@
   .session-title {
     font-weight: 600;
     font-size: 14px;
-    color: var(--primary-color);
+    color: var(--text-primary);
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;

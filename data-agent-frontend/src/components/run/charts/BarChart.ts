@@ -60,26 +60,37 @@ export class BarChart extends BaseChart {
     }
 
     const option: echarts.EChartsOption = {
+      backgroundColor: 'transparent',
       title: {
         text: this._name || '柱状图',
         left: 'center',
+        textStyle: { color: '#f1f5f9' },
       },
       tooltip: {
         trigger: 'axis',
+        backgroundColor: 'rgba(30, 41, 59, 0.95)',
+        borderColor: '#334155',
+        textStyle: { color: '#f1f5f9' },
       },
       legend: {
         orient: 'horizontal',
         bottom: 0,
+        textStyle: { color: '#cbd5e1' },
       },
       xAxis: {
         type: 'category',
         data: xAxisData,
         axisLabel: {
           rotate: xAxisData.length > 10 ? 45 : 0,
+          color: '#94a3b8',
         },
+        axisLine: { lineStyle: { color: '#334155' } },
       },
       yAxis: {
         type: 'value',
+        axisLabel: { color: '#94a3b8' },
+        axisLine: { lineStyle: { color: '#334155' } },
+        splitLine: { lineStyle: { color: 'rgba(51, 65, 85, 0.3)' } },
       },
       series: seriesData,
     };

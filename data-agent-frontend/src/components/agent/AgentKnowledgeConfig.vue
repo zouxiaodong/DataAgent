@@ -786,5 +786,184 @@
 </script>
 
 <style scoped>
-  /* 无需额外样式，使用 ElementPlus 默认样式 */
+  /* Table glass styling */
+  :deep(.el-table) {
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-glass);
+  }
+
+  :deep(.el-table th) {
+    background: var(--bg-glass-hover);
+    color: var(--text-primary);
+    border-color: var(--border-glass);
+  }
+
+  :deep(.el-table td) {
+    border-color: var(--border-glass);
+    color: var(--text-primary);
+  }
+
+  :deep(.el-table tr:hover > td) {
+    background: var(--bg-glass-hover) !important;
+  }
+
+  :deep(.el-table--border) {
+    border-color: var(--border-glass);
+  }
+
+  /* Card glass styling */
+  :deep(.el-card) {
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+  }
+
+  /* Status tags */
+  :deep(.el-tag.el-tag--success) {
+    color: var(--success-color);
+    border-color: var(--success-color);
+    background: rgba(52, 211, 153, 0.1);
+  }
+
+  :deep(.el-tag.el-tag--danger) {
+    border-color: rgba(239, 68, 68, 0.3);
+    background: rgba(239, 68, 68, 0.1);
+  }
+
+  /* Buttons */
+  :deep(.el-button--primary) {
+    background: var(--accent-color);
+    border-radius: var(--radius-pill);
+    border-color: var(--accent-color);
+  }
+
+  :deep(.el-button--primary.is-plain) {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    background: transparent;
+  }
+
+  :deep(.el-button--primary.is-plain:hover) {
+    background: var(--accent-light);
+  }
+
+  :deep(.el-button--success) {
+    border-radius: var(--radius-pill);
+  }
+
+  /* Dialog glass styling */
+  :deep(.el-dialog) {
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+  }
+
+  :deep(.el-dialog__header) {
+    border-bottom: 1px solid var(--border-glass);
+  }
+
+  :deep(.el-dialog__title) {
+    color: var(--text-primary);
+  }
+
+  :deep(.el-dialog__body) {
+    color: var(--text-primary);
+  }
+
+  /* Form items */
+  :deep(.el-form-item__label) {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* Alert */
+  :deep(.el-alert) {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+  }
+
+  /* Section headers */
+  h2, h3 {
+    color: var(--text-primary);
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  /* Divider */
+  :deep(.el-divider) {
+    border-color: var(--border-glass);
+  }
+
+  /* Input */
+  :deep(.el-input__wrapper) {
+    background: var(--bg-glass);
+    border-color: var(--border-glass);
+  }
+
+  :deep(.el-input__inner) {
+    color: var(--text-primary);
+  }
+
+  :deep(.el-input__wrapper:hover) {
+    border-color: var(--border-glass-hover);
+  }
+
+  :deep(.el-input__wrapper.is-focus) {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 1px var(--accent-color);
+  }
+
+  /* Upload area */
+  :deep(.el-upload-dragger) {
+    background: var(--bg-glass);
+    border: 2px dashed var(--border-glass);
+    border-radius: var(--radius-lg);
+  }
+
+  :deep(.el-upload-dragger:hover) {
+    border-color: var(--accent-color);
+    background: var(--accent-light);
+  }
+
+  /* Pagination */
+  :deep(.el-pagination) {
+    color: var(--text-primary);
+  }
+
+  :deep(.el-pagination button) {
+    background: var(--bg-glass);
+    border-color: var(--border-glass);
+    color: var(--text-primary);
+  }
+
+  :deep(.el-pagination .el-pager li) {
+    background: var(--bg-glass);
+    color: var(--text-primary);
+  }
+
+  :deep(.el-pagination .el-pager li.is-active) {
+    background: var(--accent-color);
+    color: white;
+  }
+
+  /* Select */
+  :deep(.el-select) {
+    color: var(--text-primary);
+  }
 </style>

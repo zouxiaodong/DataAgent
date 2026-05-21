@@ -113,8 +113,10 @@
   }
 
   .preset-questions-container {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-primary);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-lg);
     padding: 12px 16px;
   }
@@ -149,7 +151,7 @@
     gap: 8px;
     margin-bottom: 12px;
     padding-bottom: 8px;
-    border-bottom: 1px solid var(--border-primary);
+    border-bottom: 1px solid var(--border-glass);
   }
 
   .header-icon {
@@ -176,8 +178,8 @@
     align-items: center;
     gap: 6px;
     padding: 6px 12px;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-primary);
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-md);
     cursor: pointer;
     transition: all 0.2s ease;
@@ -198,7 +200,7 @@
   .question-text {
     flex: 1;
     font-size: 13px;
-    color: var(--primary-color);
+    color: var(--text-primary);
     line-height: 1.4;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -212,7 +214,7 @@
   .question-arrow {
     flex-shrink: 0;
     font-size: 14px;
-    color: var(--border-primary);
+    color: var(--text-tertiary);
     transition: all 0.2s ease;
   }
 

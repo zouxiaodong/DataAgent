@@ -362,8 +362,10 @@ requests.post(
   }
 
   .card {
-    background: var(--bg-primary);
-    border: 1px solid var(--border-primary);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-lg);
     padding: 16px;
     box-shadow: var(--shadow-xs);
@@ -392,10 +394,13 @@ requests.post(
   }
 
   .code {
-    background: #0b1021;
-    color: #e0e6f6;
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
+    color: var(--text-primary);
     padding: 14px;
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     overflow: auto;
     font-size: 12px;
   }

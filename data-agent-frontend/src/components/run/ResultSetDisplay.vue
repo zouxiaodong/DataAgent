@@ -209,17 +209,17 @@
 <style scoped>
   .result-set-error {
     padding: 12px;
-    background-color: #fef2f2;
-    border: 1px solid #fecaca;
+    background: rgba(248, 113, 113, 0.1);
+    border: 1px solid rgba(248, 113, 113, 0.3);
     border-radius: var(--radius-sm);
-    color: #ef4444;
+    color: var(--error-color);
     margin: 8px 0;
   }
 
   .result-set-empty {
     padding: 12px;
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-primary);
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-sm);
     color: var(--text-tertiary);
     margin: 8px 0;
@@ -231,7 +231,7 @@
     align-items: center;
     margin-bottom: 12px;
     padding: 8px 0;
-    border-bottom: 1px solid var(--border-primary);
+    border-bottom: 1px solid var(--border-glass);
   }
 
   .buttons-bar {
@@ -252,11 +252,11 @@
   }
 
   .tool-btn:hover {
-    background-color: var(--bg-secondary);
+    background: var(--bg-glass-hover);
   }
 
   .view-active {
-    background-color: var(--accent-light);
+    background: var(--accent-light);
     color: var(--accent-color);
   }
 

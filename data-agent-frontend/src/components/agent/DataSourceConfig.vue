@@ -1724,4 +1724,183 @@
   });
 </script>
 
-<style scoped></style>
+<style scoped>
+  /* Table wrapper glass styling */
+  :deep(.el-table) {
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-glass);
+  }
+
+  :deep(.el-table th) {
+    background: var(--bg-glass-hover);
+    color: var(--text-primary);
+    border-color: var(--border-glass);
+  }
+
+  :deep(.el-table td) {
+    border-color: var(--border-glass);
+    color: var(--text-primary);
+  }
+
+  :deep(.el-table tr:hover > td) {
+    background: var(--bg-glass-hover) !important;
+  }
+
+  :deep(.el-table--border) {
+    border-color: var(--border-glass);
+  }
+
+  /* Connection status badge */
+  :deep(.el-tag.el-tag--success) {
+    color: var(--success-color);
+    border-color: var(--success-color);
+    background: rgba(52, 211, 153, 0.1);
+  }
+
+  :deep(.el-tag.el-tag--danger) {
+    border-color: rgba(239, 68, 68, 0.3);
+    background: rgba(239, 68, 68, 0.1);
+  }
+
+  /* Test connection button */
+  :deep(.el-button--primary) {
+    background: var(--accent-color);
+    border-radius: var(--radius-pill);
+    border-color: var(--accent-color);
+  }
+
+  :deep(.el-button--primary:hover) {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+  }
+
+  :deep(.el-button--primary.is-plain) {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    background: transparent;
+  }
+
+  :deep(.el-button--primary.is-plain:hover) {
+    background: var(--accent-light);
+  }
+
+  /* Form items */
+  .form-item {
+    margin-bottom: 20px;
+  }
+
+  .form-item label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-primary);
+  }
+
+  /* Dialog glass styling */
+  :deep(.el-dialog) {
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+  }
+
+  :deep(.el-dialog__header) {
+    border-bottom: 1px solid var(--border-glass);
+  }
+
+  :deep(.el-dialog__title) {
+    color: var(--text-primary);
+  }
+
+  :deep(.el-dialog__body) {
+    color: var(--text-primary);
+  }
+
+  /* Expand row content */
+  :deep(.el-table__expanded-cell) {
+    background: var(--bg-glass) !important;
+  }
+
+  /* Loading text */
+  .loading-text {
+    color: var(--text-secondary);
+  }
+
+  /* Foreign key dialog info box */
+  .fk-info-box {
+    background: var(--accent-light);
+    border-radius: var(--radius-sm);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .fk-info-box p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .fk-info-box span {
+    font-weight: 600;
+    color: var(--accent-color);
+  }
+
+  /* Section headers */
+  h2, h3, h4 {
+    color: var(--text-primary);
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  /* Divider */
+  :deep(.el-divider) {
+    border-color: var(--border-glass);
+  }
+
+  /* Tabs */
+  :deep(.el-tabs__item) {
+    color: var(--text-secondary);
+  }
+
+  :deep(.el-tabs__item.is-active) {
+    color: var(--accent-color);
+  }
+
+  :deep(.el-tabs__active-bar) {
+    background-color: var(--accent-color);
+  }
+
+  :deep(.el-tabs__nav-wrap::after) {
+    background-color: var(--border-glass);
+  }
+
+  /* Descriptions */
+  :deep(.el-descriptions__label) {
+    color: var(--text-secondary);
+  }
+
+  :deep(.el-descriptions__content) {
+    color: var(--text-primary);
+  }
+
+  :deep(.el-descriptions--border) {
+    border: 1px solid var(--border-glass);
+  }
+
+  :deep(.el-descriptions--border td) {
+    border-color: var(--border-glass);
+  }
+</style>

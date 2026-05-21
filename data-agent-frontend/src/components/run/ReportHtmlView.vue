@@ -81,10 +81,12 @@
   .report-html-view-wrapper {
     width: 100%;
     min-height: 400px;
-    border: 1px solid var(--border-primary);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    background: var(--bg-primary);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
   }
 
   .report-html-iframe {

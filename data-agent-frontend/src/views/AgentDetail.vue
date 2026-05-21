@@ -18,7 +18,7 @@
   <BaseLayout>
     <el-container style="margin-top: 20px; gap: 10px">
       <!-- 设置 header-->
-      <el-header style="background-color: white; margin-bottom: 20px">
+      <el-header style="background: var(--bg-glass); backdrop-filter: var(--backdrop-blur); border-bottom: 1px solid var(--border-glass); margin-bottom: 20px">
         <el-row :gutter="20" align="middle">
           <el-col :span="1">
             <el-button
@@ -65,7 +65,7 @@
       </el-header>
       <el-container style="gap: 10px">
         <!-- 左侧菜单-->
-        <el-aside width="200px" style="background-color: white">
+        <el-aside width="200px" style="background: var(--bg-glass); backdrop-filter: var(--backdrop-blur); border-right: 1px solid var(--border-glass);">
           <el-menu
             :default-active="activeMenuIndex"
             class="el-menu-vertical-demo"
@@ -121,7 +121,7 @@
             </el-menu-item-group>
           </el-menu>
         </el-aside>
-        <el-main style="background-color: white">
+        <el-main style="background: transparent;">
           <!-- 右侧内容-->
           <AgentBaseSetting v-if="activeMenuIndex === 'basic'" :agent="agent"></AgentBaseSetting>
           <AgentDataSourceConfig
@@ -338,6 +338,11 @@
 </script>
 
 <style scoped>
+  .agent-detail-wrapper {
+    background: var(--gradient-bg);
+    min-height: 100vh;
+  }
+
   .avatar-wrapper {
     position: relative;
     width: 60px;
@@ -378,27 +383,63 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
+
+  .el-menu-vertical-demo {
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .el-menu-vertical-demo :deep(.el-menu-item) {
+    color: var(--text-secondary) !important;
+  }
+
+  .el-menu-vertical-demo :deep(.el-menu-item:hover) {
+    background: var(--bg-glass-hover) !important;
+    color: var(--text-primary) !important;
+  }
+
+  .el-menu-vertical-demo :deep(.el-menu-item.is-active) {
+    background: var(--accent-light) !important;
+    color: var(--accent-color) !important;
+    border-radius: var(--radius-base);
+  }
+
+  .el-menu-vertical-demo :deep(.el-menu-item-group__title) {
+    color: var(--text-secondary) !important;
+  }
+
+  h2 {
+    color: var(--text-primary);
+  }
+
+  .el-divider {
+    border-color: var(--border-glass) !important;
+  }
 </style>
 
 <style>
-  .el-header {
-    background-color: var(--bg-primary) !important;
-    border-radius: var(--radius-xl);
-    border: 1px solid var(--border-primary);
-    box-shadow: var(--shadow-xs);
+  :deep(.el-tabs__item) {
+    color: var(--text-secondary) !important;
   }
 
-  .el-aside {
-    background-color: var(--bg-primary) !important;
-    border-radius: var(--radius-xl);
-    border: 1px solid var(--border-primary);
-    box-shadow: var(--shadow-xs);
+  :deep(.el-tabs__item.is-active) {
+    color: var(--accent-color) !important;
   }
 
-  .el-main {
-    background-color: var(--bg-primary) !important;
-    border-radius: var(--radius-xl);
-    border: 1px solid var(--border-primary);
-    box-shadow: var(--shadow-xs);
+  :deep(.el-tabs__active-bar) {
+    background-color: var(--accent-color) !important;
+  }
+
+  :deep(.el-descriptions__label) {
+    color: var(--text-secondary) !important;
+  }
+
+  :deep(.el-descriptions__content) {
+    color: var(--text-primary) !important;
+  }
+
+  :deep(.el-button--primary) {
+    background: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
   }
 </style>

@@ -88,8 +88,10 @@
 
 <style scoped>
   .human-feedback-area {
-    background: var(--accent-light);
-    border: 1px solid var(--accent-glow);
+    background: var(--bg-glass);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--border-glass);
     border-radius: var(--radius-lg);
     padding: 20px;
     margin: 16px 0;

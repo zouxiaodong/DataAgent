@@ -18,8 +18,8 @@ import App from '@/App.vue';
 import router from '@/router';
 
 // 引入全局样式
-import '@/styles/global.css';
 import 'element-plus/dist/index.css';
+import '@/styles/global.css';
 import ElementPlus from 'element-plus';
 
 // 创建应用实例

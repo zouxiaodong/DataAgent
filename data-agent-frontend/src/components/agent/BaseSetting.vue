@@ -234,7 +234,7 @@
     gap: 12px;
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid var(--border-primary);
+    border-top: 1px solid var(--border-glass);
   }
 
   .button-group :deep(.el-button) {
