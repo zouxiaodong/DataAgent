@@ -44,11 +44,11 @@ COPY .mvn /app/DataAgent/.mvn
 COPY mvnw /app/DataAgent/mvnw
 
 WORKDIR /app/DataAgent
-RUN mvn dependency:go-offline -Dspotless.apply.skip=true -pl data-agent-management -am 2>/dev/null || true
+RUN mvn dependency:go-offline -Dspotless.apply.skip=true -Dcheckstyle.skip=true -pl data-agent-management -am 2>/dev/null || true
 
 # ====== Layer 2: 复制源码并构建（源码变化时才重新编译）======
 COPY . /app/DataAgent
-RUN mvn install -DskipTests -Dspotless.apply.skip=true -pl data-agent-management -am
+RUN mvn install -DskipTests -Dspotless.apply.skip=true -Dcheckstyle.skip=true -pl data-agent-management -am
 
 # ====== 运行镜像 ======
 FROM eclipse-temurin:17-jdk-jammy
