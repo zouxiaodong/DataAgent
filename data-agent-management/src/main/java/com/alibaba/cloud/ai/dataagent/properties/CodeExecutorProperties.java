@@ -36,7 +36,7 @@ public class CodeExecutorProperties {
 	/**
 	 * Specify implementation class of code container pool runtime service
 	 */
-	CodePoolExecutorEnum codePoolExecutor = CodePoolExecutorEnum.DOCKER;
+	CodePoolExecutorEnum codePoolExecutor = CodePoolExecutorEnum.LOCAL;
 
 	/**
 	 * Service host, use default address if null

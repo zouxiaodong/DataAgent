@@ -49,7 +49,7 @@ public class OpenTelemetryConfig {
 
 	private static final String SERVICE_NAME = "data-agent";
 
-	private boolean enabled = true;
+	private boolean enabled = false;
 
 	private String host;
 
