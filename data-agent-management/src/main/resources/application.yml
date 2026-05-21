@@ -25,7 +25,10 @@ spring:
       encoding: utf-8
   ai:
     vectorstore:
-      type: simple
+      type: elasticsearch
+
+  elasticsearch:
+    uris: http://elasticsearch:9200
     alibaba:
       data-agent:
         vector-store:
