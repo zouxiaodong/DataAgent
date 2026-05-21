@@ -26,10 +26,13 @@ spring:
   ai:
     vectorstore:
       type: elasticsearch
+      elasticsearch:
+        initialize-schema: true
 
   elasticsearch:
     uris: http://elasticsearch:9200
-    alibaba:
+
+  alibaba:
       data-agent:
         vector-store:
           table-topk-limit: 10
