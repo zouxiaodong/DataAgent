@@ -218,68 +218,11 @@
                 :agentId="agent.id"
                 :onQuestionClick="handlePresetQuestionClick"
               />
+              <!-- switch-group hidden
               <div class="switch-group">
-                <!--
-                <div class="switch-item">
-                  <span class="switch-label">人工反馈</span>
-                  <el-tooltip
-                    :disabled="!requestOptions.nl2sqlOnly"
-                    content="该功能在NL2SQL模式下不能使用"
-                    placement="top"
-                  >
-                    <el-switch
-                      v-model="requestOptions.humanFeedback"
-                      :disabled="requestOptions.nl2sqlOnly || isStreaming || showHumanFeedback"
-                    />
-                  </el-tooltip>
-                </div>
-                -->
-                <div class="switch-item">
-                  <span class="switch-label">仅NL2SQL</span>
-                  <el-switch
-                    v-model="requestOptions.nl2sqlOnly"
-                    :disabled="isStreaming || showHumanFeedback"
-                    @change="handleNl2sqlOnlyChange"
-                  />
-                </div>
-                <div class="switch-item">
-                  <span class="switch-label">自动Scroll</span>
-                  <el-switch v-model="autoScroll" />
-                </div>
-                <div class="switch-item">
-                  <span class="switch-label">显示SQL结果</span>
-                  <el-tooltip
-                    content="启用本功能会将SQL查询结果存储到DataAgent项目的数据库中，如果数据量较大不建议开启本功能"
-                    placement="top"
-                  >
-                    <el-switch
-                      v-model="resultSetDisplayConfig.showSqlResults"
-                      :disabled="isStreaming || showHumanFeedback"
-                    />
-                  </el-tooltip>
-                </div>
-                <div class="switch-item">
-                  <span class="switch-label">每页数量</span>
-                  <el-select
-                    v-model="resultSetDisplayConfig.pageSize"
-                    :disabled="isStreaming || showHumanFeedback"
-                    style="width: 80px"
-                  >
-                    <el-option label="5" :value="5" />
-                    <el-option label="10" :value="10" />
-                    <el-option label="20" :value="20" />
-                    <el-option label="50" :value="50" />
-                    <el-option label="100" :value="100" />
-                  </el-select>
-                </div>
-                <!-- <div class="switch-item">
-                <span class="switch-label">报告格式</span>
-                <el-radio-group v-model="requestOptions.reportFormat" size="small">
-                  <el-radio-button value="markdown">Markdown</el-radio-button>
-                  <el-radio-button value="html">HTML</el-radio-button>
-                </el-radio-group>
-              </div> -->
+                ...
               </div>
+              -->
             </div>
           </div>
           <div class="input-container">
