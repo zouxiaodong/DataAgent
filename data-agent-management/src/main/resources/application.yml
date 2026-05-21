@@ -28,6 +28,7 @@ spring:
       type: elasticsearch
       elasticsearch:
         initialize-schema: true
+        dimensions: 1024
 
   elasticsearch:
     uris: http://elasticsearch:9200
