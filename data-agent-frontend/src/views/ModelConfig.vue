@@ -266,7 +266,7 @@
             <el-input-number
               v-model="formData.maxTokens"
               :min="100"
-              :max="10000"
+              :max="1000000"
               :step="100"
               style="width: 100%"
             />
@@ -419,8 +419,8 @@
           {
             type: 'number',
             min: 100,
-            max: 10000,
-            message: '最大Token必须在100-10000之间',
+            max: 1000000,
+            message: '最大Token必须在100-1000000之间',
             trigger: 'blur',
           },
         ],
