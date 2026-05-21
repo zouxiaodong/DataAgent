@@ -144,7 +144,8 @@
                   <div
                     v-if="
                       nodeBlock.length > 0 &&
-                      nodeBlock[0].nodeName === 'ReportGeneratorNode' &&
+                      (nodeBlock[0].nodeName === 'ReportGeneratorNode' ||
+                        nodeBlock[0].nodeName === 'planner-reasoning') &&
                       nodeBlock[0].textType === 'MARK_DOWN'
                     "
                     class="agent-response-block"
@@ -1555,15 +1556,23 @@
                       text: response.text,
                     };
                     sessionState.nodeBlocks[currentBlockIndex].push(newBlock);
+                    // Accumulate planner-reasoning markdown for download support
+                    if (response.nodeName === 'planner-reasoning' && response.textType === 'MARK_DOWN') {
+                      sessionState.markdownReportContent += response.text;
+                    }
                   } else {
                     // 创建新的节点块
                     const newBlock: AgentResponse = {
                       ...response,
                       text: response.text,
                     };
-                    sessionState.nodeBlocks.push([newBlock]);
-                    currentBlockIndex = sessionState.nodeBlocks.length - 1;
-                    currentNodeName = response.nodeName;
+                  sessionState.nodeBlocks.push([newBlock]);
+                  currentBlockIndex = sessionState.nodeBlocks.length - 1;
+                  currentNodeName = response.nodeName;
+                  // Accumulate planner-reasoning markdown for download support
+                  if (response.nodeName === 'planner-reasoning' && response.textType === 'MARK_DOWN') {
+                    sessionState.markdownReportContent += response.text;
+                  }
                   }
                 }
               }
