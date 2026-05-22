@@ -64,33 +64,33 @@ export class BarChart extends BaseChart {
       title: {
         text: this._name || '柱状图',
         left: 'center',
-        textStyle: { color: '#f1f5f9' },
+        textStyle: { color: '#f8fafc' },
       },
       tooltip: {
         trigger: 'axis',
         backgroundColor: 'rgba(30, 41, 59, 0.95)',
-        borderColor: '#334155',
+        borderColor: '#475569',
         textStyle: { color: '#f1f5f9' },
       },
       legend: {
         orient: 'horizontal',
         bottom: 0,
-        textStyle: { color: '#cbd5e1' },
+        textStyle: { color: '#e2e8f0' },
       },
       xAxis: {
         type: 'category',
         data: xAxisData,
         axisLabel: {
           rotate: xAxisData.length > 10 ? 45 : 0,
-          color: '#94a3b8',
+          color: '#c8d6e5',
         },
-        axisLine: { lineStyle: { color: '#334155' } },
+        axisLine: { lineStyle: { color: '#475569' } },
       },
       yAxis: {
         type: 'value',
-        axisLabel: { color: '#94a3b8' },
-        axisLine: { lineStyle: { color: '#334155' } },
-        splitLine: { lineStyle: { color: 'rgba(51, 65, 85, 0.3)' } },
+        axisLabel: { color: '#c8d6e5' },
+        axisLine: { lineStyle: { color: '#475569' } },
+        splitLine: { lineStyle: { color: 'rgba(71, 85, 105, 0.3)' } },
       },
       series: seriesData,
     };

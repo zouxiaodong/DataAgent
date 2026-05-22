@@ -60,19 +60,19 @@ export class PieChart extends BaseChart {
       title: {
         text: this._name || '饼图',
         left: 'center',
-        textStyle: { color: '#f1f5f9' },
+        textStyle: { color: '#f8fafc' },
       },
       tooltip: {
         trigger: 'item',
         formatter: '{a} <br/>{b}: {c} ({d}%)',
         backgroundColor: 'rgba(30, 41, 59, 0.95)',
-        borderColor: '#334155',
+        borderColor: '#475569',
         textStyle: { color: '#f1f5f9' },
       },
       legend: {
         orient: 'horizontal',
         bottom: 0,
-        textStyle: { color: '#cbd5e1' },
+        textStyle: { color: '#e2e8f0' },
       },
       series: [
         {
@@ -86,6 +86,9 @@ export class PieChart extends BaseChart {
               shadowOffsetX: 0,
               shadowColor: 'rgba(0, 0, 0, 0.5)',
             },
+          },
+          label: {
+            color: '#e2e8f0',
           },
         },
       ],
