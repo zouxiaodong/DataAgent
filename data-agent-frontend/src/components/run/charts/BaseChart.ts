@@ -26,8 +26,8 @@ export interface ChartData {
 
 export type ChartTypes = 'table' | 'bar' | 'column' | 'line' | 'pie';
 
-// Dark theme colors — lightened for WCAG AA on dark backgrounds
-export const COLOR_PANEL = ['#60a5fa', '#fbbf24', '#34d399', '#f87171', '#a78bfa', '#fb923c'];
+// Blue-themed colors for dark backgrounds
+export const COLOR_PANEL = ['#3b82f6', '#60a5fa', '#93c5fd', '#2563eb', '#1d4ed8', '#7dd3fc'];
 
 // Extended colors for dark theme
 export const EXTENDED_COLORS = [

@@ -18,7 +18,7 @@ services:
     image: mysql:8.0
     container_name: data-agent-mysql-inner
     ports:
-      - "3306:3306"
+      - "3308:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: nl2sql_db
@@ -52,10 +52,6 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
-      mysql-data:
-        condition: service_healthy
-      postgres-data:
-        condition: service_healthy
       elasticsearch:
         condition: service_healthy
     networks:
@@ -68,7 +64,7 @@ services:
     container_name: data-agent-elasticsearch
     restart: unless-stopped
     ports:
-      - "9200:9200"
+      - "9201:9200"
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=false
@@ -101,45 +97,45 @@ services:
       - app-network
     restart: unless-stopped
 
-  # MySQL 模拟数据源
-  mysql-data:
-    image: mysql:8.0
-    container_name: data-agent-mysql-datasource
-    restart: always
-    ports:
-      - "3307:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-    volumes:
-      - mysql-datasource-data:/var/lib/mysql
-    networks:
-      - app-network
-    command: --default-authentication-plugin=mysql_native_password
-    healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot" ]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+  # # MySQL 模拟数据源
+  # mysql-data:
+  #   image: mysql:8.0
+  #   container_name: data-agent-mysql-datasource
+  #   restart: always
+  #   ports:
+  #     - "3309:3306"
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root
+  #   volumes:
+  #     - mysql-datasource-data:/var/lib/mysql
+  #   networks:
+  #     - app-network
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   healthcheck:
+  #     test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot" ]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
 
-  # PostgreSQL 模拟数据源
-  postgres-data:
-    image: postgres:15
-    container_name: data-agent-postgres-datasource
-    restart: always
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    volumes:
-      - postgres-datasource-data:/var/lib/postgresql/data
-    networks:
-      - app-network
-    healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+  # # PostgreSQL 模拟数据源
+  # postgres-data:
+  #   image: postgres:15
+  #   container_name: data-agent-postgres-datasource
+  #   restart: always
+  #   ports:
+  #     - "5433:5432"
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: postgres
+  #   volumes:
+  #     - postgres-datasource-data:/var/lib/postgresql/data
+  #   networks:
+  #     - app-network
+  #   healthcheck:
+  #     test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
 
 networks:
   app-network:
